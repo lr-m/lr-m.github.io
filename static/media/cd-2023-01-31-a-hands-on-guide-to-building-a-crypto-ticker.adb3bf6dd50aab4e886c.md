@@ -1,6 +1,6 @@
 ---
 published: true
-title : "⌨️ A Hands-on Guide to Building a Crypto Ticker"
+title : "💻 A Hands-on Guide to Building a Crypto Ticker"
 toc: true
 toc_sticky: true
 categories:

@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🐛️ Analysing a Dirt-cheap Router: MIPS Code Execution with ROP"
+title : "🐛️ Analysing a Dirt-cheap Router [3] : MIPS Code Execution with ROP"
 toc: true
 toc_sticky: true
 categories:

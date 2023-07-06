@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🐛️ Analysing a Dirt-cheap Router: Getting Started"
+title : "🐛️ Analysing a Dirt-cheap Router [1] : Getting Started"
 toc: true
 toc_sticky: true
 categories:

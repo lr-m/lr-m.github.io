@@ -1,6 +1,6 @@
 ---
 published: true
-title : "⌨️ Replacing Lastpass the Hard Way - Vault"
+title : "💻 Replacing Lastpass the Hard Way - Vault"
 toc: true
 toc_sticky: true
 categories:
