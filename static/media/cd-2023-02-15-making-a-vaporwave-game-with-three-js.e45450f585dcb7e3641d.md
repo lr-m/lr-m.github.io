@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🕹️ Making a Vaporwave Game with Three.js"
+title : "💻 Making a Vaporwave Game with Three.js"
 toc: true
 toc_sticky: true
 categories:

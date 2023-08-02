@@ -32,6 +32,17 @@
 ### Coretech Security, Cheltenham - *Junior Consultant (Vulnerability Research)*
 *September 2022 - Present*
 
+- Spent lots of time in Ghidra reverse-engineering binaries (custom protocols, packet formats, general reversing)
+- Discovery of multiple bugs in various embedded systems
+- Simple binary exploitation on multiple architectures
+- Mobile application reverse engineering using frida and jadx
+- Creation of lots of Python programs enabling further VR (exploits, scripts for interaction with device)
+- Binary emulation using Qiling
+- Acted as manager for Research Engineer intern, came up with a project for them to do and supported them throughout the process
+- Small amount of basestation work
+- Some hardware experience (dumping firmware, attaching to debug interfaces)
+- Writing of technical reports with other team members
+
 ### GCHQ, Cheltenham - *Cyber Insights Summer School 2021*
 *June 2021 - September 2021*
 

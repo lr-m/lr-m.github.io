@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[634],{4634:function(e,p,s){e.exports=s.p+"static/media/resume.8f597bec0b83363e4fa4.md"}}]);
