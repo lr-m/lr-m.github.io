@@ -43,7 +43,7 @@
 - Some hardware experience (dumping firmware, attaching to debug interfaces)
 - Writing of technical reports with other team members
 
-### GCHQ, Cheltenham - *Cyber Insights Summer School 2021*
+### Cheltenham - *Cyber Insights Summer School 2021*
 *June 2021 - September 2021*
 
 - Great insight into the tools and techniques used by professionals in the field of cybersecurity

@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.3b88c558.css",
-    "main.js": "/static/js/main.c9fe5b5c.js",
+    "main.js": "/static/js/main.7ad6bd67.js",
     "static/js/971.83e9ba99.chunk.js": "/static/js/971.83e9ba99.chunk.js",
-    "static/js/634.0157c92f.chunk.js": "/static/js/634.0157c92f.chunk.js",
+    "static/js/634.d33d97c4.chunk.js": "/static/js/634.d33d97c4.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
     "static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.md": "/static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.e45450f585dcb7e3641d.md",
@@ -21,16 +21,16 @@
     "static/media/mail.png": "/static/media/mail.284d1cc1b59876a0e738.png",
     "static/media/vr-2022-10-15-not-so-smart-lock.md": "/static/media/vr-2022-10-15-not-so-smart-lock.18f9588f61b9a90773df.md",
     "static/media/email.png": "/static/media/email.0a784bab1e4c0415a758.png",
-    "static/media/resume.md": "/static/media/resume.ae447ad06c6480df9516.md",
-    "static/media/about-me.md": "/static/media/about-me.5a37af31487545d2eb0d.md",
+    "static/media/resume.md": "/static/media/resume.6161832f8baf0d03b005.md",
     "index.html": "/index.html",
+    "static/media/about-me.md": "/static/media/about-me.5a37af31487545d2eb0d.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.3b88c558.css.map": "/static/css/main.3b88c558.css.map",
-    "main.c9fe5b5c.js.map": "/static/js/main.c9fe5b5c.js.map",
+    "main.7ad6bd67.js.map": "/static/js/main.7ad6bd67.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3b88c558.css",
-    "static/js/main.c9fe5b5c.js"
+    "static/js/main.7ad6bd67.js"
   ]
 }
