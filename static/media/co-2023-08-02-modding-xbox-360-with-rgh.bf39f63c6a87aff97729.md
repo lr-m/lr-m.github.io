@@ -266,7 +266,7 @@ Next, check that **RGH-3** is checked on the **XeBuild** window, and select the 
 
 Once this file has been located, we can go back to our good old ESP32 flasher, and run the following command **python3 .\xflash-serial.py COMX write .\updflash.bin**, where **COMX** is the COM port the ESP32 is using. Then wait for the entire flash to be written (which takes a while now that we are writing the full 0x400 blocks).
 
-Once this has flashed, disconnected the ESP32 from the computer, and turn the console on via the power button - you should see the normal boot sequence. From now on, if you boot using the eject key, you will end up back in Xell.
+Once this has flashed, disconnect the ESP32 from the computer, and turn the console on via the power button - you should see the normal boot sequence. From now on, if you boot using the eject key, you will end up back in Xell.
 
 Congratulations if you got this far, you have successfully RGH'd your console (or learned how to do so). You can de-solder the NAND flash wires now if you want, or just disconnect the ESP32 and leave them in there (just make sure they aren't touching anything important) - up to you!
 

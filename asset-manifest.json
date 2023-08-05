@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3b88c558.css",
-    "main.js": "/static/js/main.fb25b89a.js",
+    "main.js": "/static/js/main.c9fe5b5c.js",
     "static/js/971.83e9ba99.chunk.js": "/static/js/971.83e9ba99.chunk.js",
     "static/js/634.0157c92f.chunk.js": "/static/js/634.0157c92f.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
@@ -16,7 +16,7 @@
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.adb3bf6dd50aab4e886c.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
-    "static/media/co-2022-10-30-modding-xbox-360-with-rgh.md": "/static/media/co-2022-10-30-modding-xbox-360-with-rgh.8c7335d4559d12b21dc1.md",
+    "static/media/co-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/co-2023-08-02-modding-xbox-360-with-rgh.bf39f63c6a87aff97729.md",
     "static/media/re-2022-10-30-cheap-games-console-teardown.md": "/static/media/re-2022-10-30-cheap-games-console-teardown.81ec7f9816a194786031.md",
     "static/media/mail.png": "/static/media/mail.284d1cc1b59876a0e738.png",
     "static/media/vr-2022-10-15-not-so-smart-lock.md": "/static/media/vr-2022-10-15-not-so-smart-lock.18f9588f61b9a90773df.md",
@@ -26,11 +26,11 @@
     "index.html": "/index.html",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.3b88c558.css.map": "/static/css/main.3b88c558.css.map",
-    "main.fb25b89a.js.map": "/static/js/main.fb25b89a.js.map",
+    "main.c9fe5b5c.js.map": "/static/js/main.c9fe5b5c.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3b88c558.css",
-    "static/js/main.fb25b89a.js"
+    "static/js/main.c9fe5b5c.js"
   ]
 }
