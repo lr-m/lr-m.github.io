@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.3b88c558.css",
-    "main.js": "/static/js/main.7ad6bd67.js",
+    "main.css": "/static/css/main.e9a5a0c2.css",
+    "main.js": "/static/js/main.79cfda65.js",
     "static/js/971.83e9ba99.chunk.js": "/static/js/971.83e9ba99.chunk.js",
     "static/js/634.d33d97c4.chunk.js": "/static/js/634.d33d97c4.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "static/media/image.png": "/static/media/image.2969082dc94f7b0b7ccd.png",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
     "static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.md": "/static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.e45450f585dcb7e3641d.md",
     "static/media/vr-2023-04-03-analysing-a-dirt-cheap-router_part_2.md": "/static/media/vr-2023-04-03-analysing-a-dirt-cheap-router_part_2.26c3899430cf3b848a8a.md",
     "static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.md": "/static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.0d3066d65619e7944a9f.md",
     "static/media/vr-2023-04-21-analysing-a-dirt-cheap-router_part_3.md": "/static/media/vr-2023-04-21-analysing-a-dirt-cheap-router_part_3.c30dd4720aae9142dea8.md",
-    "static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.md": "/static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.0bcaa29445426c081a84.md",
+    "static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.md": "/static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.a3d1dcba4a0be6a95a41.md",
     "static/media/github.png": "/static/media/github.0937c07b6bd353d2f4ce.png",
     "static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.md": "/static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.278e0ae877d1eff3c06a.md",
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
+    "static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.md": "/static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.a723f9a6cfd028e93e84.md",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.adb3bf6dd50aab4e886c.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
     "static/media/co-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/co-2023-08-02-modding-xbox-360-with-rgh.bf39f63c6a87aff97729.md",
@@ -25,12 +27,12 @@
     "index.html": "/index.html",
     "static/media/about-me.md": "/static/media/about-me.5a37af31487545d2eb0d.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
-    "main.3b88c558.css.map": "/static/css/main.3b88c558.css.map",
-    "main.7ad6bd67.js.map": "/static/js/main.7ad6bd67.js.map",
+    "main.e9a5a0c2.css.map": "/static/css/main.e9a5a0c2.css.map",
+    "main.79cfda65.js.map": "/static/js/main.79cfda65.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b88c558.css",
-    "static/js/main.7ad6bd67.js"
+    "static/css/main.e9a5a0c2.css",
+    "static/js/main.79cfda65.js"
   ]
 }

