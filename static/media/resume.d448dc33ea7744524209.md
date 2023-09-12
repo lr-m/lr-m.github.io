@@ -39,7 +39,6 @@
 - Creation of lots of Python programs enabling further VR (exploits, scripts for interaction with device)
 - Binary emulation using Qiling
 - Acted as manager for Research Engineer intern, came up with a project for them to do and supported them throughout the process
-- Small amount of basestation work
 - Some hardware experience (dumping firmware, attaching to debug interfaces)
 - Writing of technical reports with other team members
 

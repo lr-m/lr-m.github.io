@@ -158,7 +158,7 @@ Cross compilers are heavily used in industries such as embedded systems, as you 
 
 To allow cross compilation, you will need the correct toolchain.
 
-## Whats a toolchain?
+## What is a Toolchain?
 
 In the context of cross compilation, a toolchain is a collection of software/tools that are configured to work together for the purpose of building software for a target platform or architecture different than that of the host system.
 
@@ -416,6 +416,7 @@ I decided it would be funny to implement the card game Blackjack:
 It's probably safe to assume if you are reading this you aren't going to go and buy a router to play Blackjack on it, so here is an example game from player 1's perspective:
 
 ```
+
    ___  __         __     _          __
   / _ )/ /__ _____/ /__  (_)__ _____/ /__
  / _  / / _ `/ __/  '_/ / / _ `/ __/  '_/
@@ -424,16 +425,16 @@ It's probably safe to assume if you are reading this you aren't going to go and 
 
 Welcome player 1!
 Enter player count (including yourself)
-3
+> 3
 
 Waiting for 2 other players to join...
 Game starting!
 
 
 As it stands:
-- Player 1 has $100
-- Player 2 has $100
-- Player 3 has $100
+- Player 1 has $250
+- Player 2 has $250
+- Player 3 has $250
 
 Place your bet player 1...
 > 10
@@ -446,46 +447,30 @@ Player 3 is placing their bet
 Player 3 has bet $10
 
 Player 1 cards:
- _______
-|2  _   |
-|  ( )  |
-| (_'_) |
-|   |   |
-|______2|
- _______
-|9  ^   |
-|  / \  |
-|  \ /  |
-|   .   |
-|______9|
+ _______   _______
+|Q _ _  | |J  ^   |
+| ( v ) | |  / \  |
+|  \ /  | |  \ /  |
+|   .   | |   .   |
+|______Q| |______J|
 
 Player 2 cards:
- _______
-|7 _ _  |
-| ( v ) |
-|  \ /  |
-|   .   |
-|______7|
- _______
-|7  .   |
-|  /.\  |
-| (_._) |
-|   |   |
-|______7|
+ _______   _______
+|7  ^   | |3 _ _  |
+|  / \  | | ( v ) |
+|  \ /  | |  \ /  |
+|   .   | |   .   |
+|______7| |______3|
 
 Player 3 cards:
- _______
-|6  ^   |
-|  / \  |
-|  \ /  |
-|   .   |
-|______6|
- _______
-|A  ^   |
-|  / \  |
-|  \ /  |
-|   .   |
-|______A|
+ _______   _______
+|10 ^   | |A _ _  |
+|  / \  | | ( v ) |
+|  \ /  | |  \ /  |
+|   .   | |   .   |
+|_____10| |______A|
+
+Player 3 has blackjack!
 
 Dealers card:
  _______
@@ -495,69 +480,78 @@ Dealers card:
 |   |   |
 |______K|
 
-Player 1's move...
-Stick or twist?
-> t
-
-Player 1 chose to twist:
- _______
-|K _ _  |
-| ( v ) |
-|  \ /  |
-|   .   |
-|______K|
+Player 1's move, current hand:
+ _______   _______
+|Q _ _  | |J  ^   |
+| ( v ) | |  / \  |
+|  \ /  | |  \ /  |
+|   .   | |   .   |
+|______Q| |______J|
 
 Stick or twist?
 > s
 
 Player 1 chose to stick
 
-Player 1 final score: 21
+Player 1 final score: 20
 
-Player 2's move...
+Player 2's move, current hand:
+ _______   _______
+|7  ^   | |3 _ _  |
+|  / \  | | ( v ) |
+|  \ /  | |  \ /  |
+|   .   | |   .   |
+|______7| |______3|
 
-Player 2 chose to twist:
- _______
-|Q  _   |
-|  ( )  |
-| (_'_) |
-|   |   |
-|______Q|
+Player 2's chose to twist, current hand:
+ _______   _______   _______
+|7  ^   | |3 _ _  | |8  .   |
+|  / \  | | ( v ) | |  /.\  |
+|  \ /  | |  \ /  | | (_._) |
+|   .   | |   .   | |   |   |
+|______7| |______3| |______8|
 
-Player 2 is bust!
+Player 2 chose to stick
 
-Player 3's move...
-
-Player 3 chose to twist:
- _______
-|5 _ _  |
-| ( v ) |
-|  \ /  |
-|   .   |
-|______5|
-
-Player 3 chose to stick
-
-Player 3 final score: 12
+Player 2 final score: 18
 
 All players done...
 
-The dealers hidden card is:
- _______
-|10_ _  |
-| ( v ) |
-|  \ /  |
-|   .   |
-|_____10|
+The dealers full hand is:
+ _______   _______
+|K  .   | |3  .   |
+|  /.\  | |  /.\  |
+| (_._) | | (_._) |
+|   |   | |   |   |
+|______K| |______3|
 
-Dealers current score: 20
-Dealer is sticking
+Dealer is twisting
+
+Dealers current hand:
+ _______   _______   _______
+|K  .   | |3  .   | |A  .   |
+|  /.\  | |  /.\  | |  /.\  |
+| (_._) | | (_._) | | (_._) |
+|   |   | |   |   | |   |   |
+|______K| |______3| |______A|
+
+Dealer is twisting
+
+Dealers current hand:
+ _______   _______   _______   _______
+|K  .   | |3  .   | |A  .   | |J _ _  |
+|  /.\  | |  /.\  | |  /.\  | | ( v ) |
+| (_._) | | (_._) | | (_._) | |  \ /  |
+|   |   | |   |   | |   |   | |   .   |
+|______K| |______3| |______A| |______J|
+
+Dealer is bust!
 
 You won $10!
 
 ```
 
-The final size of this payload was about *7000* bytes before I did some optimisation, and about *5500* bytes after. It seems to work most of the time without issues (provided the cache flush delay is proportional to the payload size - thanks Oscar for pointing that one out).
+The final size of this payload is about *6000* bytes. It seems to work most of the time without issues (provided the cache flush delay is proportional to the payload size - thanks Oscar for pointing that one out).
 
 # Conclusion
 

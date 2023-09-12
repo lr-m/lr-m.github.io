@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.e9a5a0c2.css",
-    "main.js": "/static/js/main.79cfda65.js",
+    "main.css": "/static/css/main.04183411.css",
+    "main.js": "/static/js/main.0a12a40c.js",
     "static/js/971.83e9ba99.chunk.js": "/static/js/971.83e9ba99.chunk.js",
-    "static/js/634.d33d97c4.chunk.js": "/static/js/634.d33d97c4.chunk.js",
+    "static/js/634.15f61877.chunk.js": "/static/js/634.15f61877.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/image.png": "/static/media/image.2969082dc94f7b0b7ccd.png",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
@@ -15,24 +15,24 @@
     "static/media/github.png": "/static/media/github.0937c07b6bd353d2f4ce.png",
     "static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.md": "/static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.278e0ae877d1eff3c06a.md",
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
-    "static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.md": "/static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.a723f9a6cfd028e93e84.md",
+    "static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.md": "/static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.de44d5f93c33d4647eaa.md",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.adb3bf6dd50aab4e886c.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
     "static/media/co-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/co-2023-08-02-modding-xbox-360-with-rgh.bf39f63c6a87aff97729.md",
-    "static/media/re-2022-10-30-cheap-games-console-teardown.md": "/static/media/re-2022-10-30-cheap-games-console-teardown.81ec7f9816a194786031.md",
+    "static/media/td-2022-10-30-cheap-games-console-teardown.md": "/static/media/td-2022-10-30-cheap-games-console-teardown.81ec7f9816a194786031.md",
     "static/media/mail.png": "/static/media/mail.284d1cc1b59876a0e738.png",
     "static/media/vr-2022-10-15-not-so-smart-lock.md": "/static/media/vr-2022-10-15-not-so-smart-lock.18f9588f61b9a90773df.md",
     "static/media/email.png": "/static/media/email.0a784bab1e4c0415a758.png",
-    "static/media/resume.md": "/static/media/resume.6161832f8baf0d03b005.md",
+    "static/media/resume.md": "/static/media/resume.d448dc33ea7744524209.md",
     "index.html": "/index.html",
     "static/media/about-me.md": "/static/media/about-me.5a37af31487545d2eb0d.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
-    "main.e9a5a0c2.css.map": "/static/css/main.e9a5a0c2.css.map",
-    "main.79cfda65.js.map": "/static/js/main.79cfda65.js.map",
+    "main.04183411.css.map": "/static/css/main.04183411.css.map",
+    "main.0a12a40c.js.map": "/static/js/main.0a12a40c.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9a5a0c2.css",
-    "static/js/main.79cfda65.js"
+    "static/css/main.04183411.css",
+    "static/js/main.0a12a40c.js"
   ]
 }
