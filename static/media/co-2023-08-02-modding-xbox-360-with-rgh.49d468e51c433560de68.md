@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🎮 Modding my Childhood Xbox 360 with RGH3"
+title: "🎮 Modding my Childhood Xbox 360 with RGH3"
 toc: true
 toc_sticky: true
 categories:
@@ -22,17 +22,17 @@ RGH3 is an amazing hack that is the result of several years of reverse engineeri
 
 ![console.jpg](/assets/images/xbox_360_rgh/logo.jpg)
 
-## Background
+# Background
 
 Before we dive into the modding, you will need to know a few things about the Xbox.
 
-### Console Types
+## Console Types
 
 During the life cycle of the Xbox 360, there were various board revisions with evolving characteristics. A great reference for this is [here](https://www.xenonwiki.com/Xbox_360_Motherboards), and it describes the differences between the various motherboard variations.
 
-The motherboard I will be working with is the falcon, it is less plagued with RROD issues that the Xenon as these were manufactured using CPU/GPU components that aren't defective. 
+The motherboard I will be working with is the falcon, it is less plagued with RROD issues that the Xenon as these were manufactured using CPU/GPU components that aren't defective.
 
-#### RROD Issues
+### RROD Issues
 
 - The Xenon was the first Xbox 360 motherboard and it was released in November 2005
 - Had a high failure rate due to issues in the manufacturing of the chips, this caused the notorious Red Ring of Death (RROD) ([link to an amazing video about the PS3 Yellow Light of Death, PS3 equivalent to RROD caused by the same issue](https://www.youtube.com/watch?v=Za7WTNwAX0c))
@@ -42,7 +42,7 @@ The motherboard I will be working with is the falcon, it is less plagued with RR
 
 ![console.jpg](/assets/images/xbox_360_rgh/rrod.png)
 
-### NAND
+## NAND
 
 The NAND stores a bunch of important firmware and data, it is a TSOP-48 package, and the size varies between motherboard variations. Here are some of the things it contains:
 
@@ -58,13 +58,13 @@ The NAND stores a bunch of important firmware and data, it is a TSOP-48 package,
 
 ![console.jpg](/assets/images/xbox_360_rgh/nand.jpg)
 
-### CPU Key
+## CPU Key
 
-The CPU key is a unique, 32-byte code that is specific to each Xbox 360 console. It is stored in the CPU of the Xbox 360, and it cannot be changed. These come in the form of eFUSEs (one-time programmable bits) in the CPU, which are blown during the manufacturing process. 
+The CPU key is a unique, 32-byte code that is specific to each Xbox 360 console. It is stored in the CPU of the Xbox 360, and it cannot be changed. These come in the form of eFUSEs (one-time programmable bits) in the CPU, which are blown during the manufacturing process.
 
 This key is used to encrypt/decrypt various bits of data in the console, and it must be known if we want to write custom software for the device. Otherwise when the console starts up and verifies the software on the NAND, the checks will fail and the boot will abort. This prevents unauthorized firmware from being run on the console. However, once the key is known, these checks become redundant.
 
-#### Digital Signature Verification
+### Digital Signature Verification
 
 As mentioned above, the CPU key prevents the running of unauthorized code. But how does this work exactly?
 
@@ -76,7 +76,7 @@ During the boot process, when the Xbox 360 is powered on, the bootloader (a piec
 
 The bootloader uses the corresponding public key (hardcoded in the previous bootloader - chaining multiple bootloaders like this is called a chain of trust) to decrypt the digital signature and verify the integrity of the system software. If the signature is valid, it means that the software has not been altered or tampered with since it was signed by Microsoft.
 
-## Doing the Mod
+# Doing the Mod
 
 So now we can take my old Xbox, and use RGH to install some custom software! This guide will start from a torn-down Xbox 360, [here is a dissassembly guide](https://www.ifixit.com/Teardown/Xbox+360+Teardown/1203).
 
@@ -84,7 +84,7 @@ Here is what it looks like at the moment:
 
 ![console.jpg](/assets/images/xbox_360_rgh/completely_torn_down.jpg)
 
-### Soldering Flash Wires
+## Soldering Flash Wires
 
 The first stage is to retrieve the CPU key, and to do this, we need to hook up to the flash. Obviously we aren't going to solder to all 48 wires on the parallel flash, there is a memory controller that can be interacted with via SPI (Serial Peripheral Interface). There are also a couple of magical pins that allow us to get access to the SPI functionality, so we will need to solder to those too.
 
@@ -96,9 +96,9 @@ After locating the points and soldering wires to them, here is how the motherboa
 
 ![console.jpg](/assets/images/xbox_360_rgh/soldered_flash.jpg)
 
-### Reading NAND Using ESP32
+## Reading NAND Using ESP32
 
-#### Connecting
+### Connecting
 
 With the necessary wires soldered, we can now move on to connecting the ESP32, which we can use to read our flash.
 
@@ -106,15 +106,15 @@ The code we will be using is [Xbox360-ESP32-Flasher](https://github.com/SlowLogi
 
 Here is how the wires need to be connected:
 
-| Xbox 360 | ESP32 |
-|-|-|
-| CLK | D18 |
-| MOSI | D23 |
-| GND | Any GND |
-| MISO | D19 |
-| CS | D5 |
-| SMC RST | D13 |
-| SMC DBG EN | D15 |
+| Xbox 360   | ESP32   |
+| ---------- | ------- |
+| CLK        | D18     |
+| MOSI       | D23     |
+| GND        | Any GND |
+| MISO       | D19     |
+| CS         | D5      |
+| SMC RST    | D13     |
+| SMC DBG EN | D15     |
 
 And here is how everything looks with everything hooked up:
 
@@ -122,7 +122,7 @@ And here is how everything looks with everything hooked up:
 
 Now, you can connect your console to power (but do not turn it on) - this powers the flash and allows us to read it.
 
-#### Fixing Flasher
+### Fixing Flasher
 
 I'm planning to fork the code and fix it, but for now, the fix will need to be applied manually. Download the repo from the github page I linked earlier and extract it, then open a terminal in the directory. Next, run the following command **python3 .\xflash-serial.py COM? read nand1.bin**, replace **COMX** with the COM port your ESP32 is on.
 
@@ -144,9 +144,9 @@ Once the read is complete, open it up in a hex editor (I recommend HxD for windo
 
 If you can see this string, take 3-5 reads of the flash in case one of them has errors (this stops you flashing a bad NAND read and bricking your console forever!). Once these reads are done, we can move onto writing our Xell image to the NAND.
 
-### Generating Xell Image
+## Generating Xell Image
 
-Now that we have our flash images, we can download and open a tool called J-Runner Pro. 
+Now that we have our flash images, we can download and open a tool called J-Runner Pro.
 
 ![console.jpg](/assets/images/xbox_360_rgh/j_runner_pro.png)
 
@@ -162,7 +162,7 @@ Your J-Runner window should match this:
 
 ![console.jpg](/assets/images/xbox_360_rgh/j_runner_pro_xell_gen.png)
 
-### Writing to NAND
+## Writing to NAND
 
 With our **glitch.ecc** file with Xell acquired, we can now use the flasher software we used earlier to write this to the flash!
 
@@ -206,13 +206,13 @@ In the old code, due to **USBSERIAL.available()** no longer returning the amount
 
 With this completed, we can run **python3 .\xflash-serial.py COMX write .\glitch.ecc** where COMX is the COM port the ESP32 is on. The program will then send the data to the ESP32, and it will use the SPI flash controller to write the contents of the flash! It should get to about **0x50/0x400** this is fine, as the entire NAND doesn't need to be flashed for this step. Once this is finished, disconnect the ESP32 from the computer.
 
-### Soldering RGH Wires
+## Soldering RGH Wires
 
 Now that the flash is written, when we turn the Xbox on, it will attempt to glitch the CPU. However, it isn't going to get very far without the necessary wires, so lets do that.
 
 You will need 2 things for a Phat Xbox 360 (like the one we are working on), a 1n4148 diode, and a 22k resistor. These are used to reduce the likelihood of frying the console over time, although some people don't bother with these, its good practice for longevity.
 
-There are 4 points we need to worry about, there are a number of ways you can attach to these points (there are alternative points you can use), but these work well for me. 
+There are 4 points we need to worry about, there are a number of ways you can attach to these points (there are alternative points you can use), but these work well for me.
 
 I usually construct my wires with the component in the middle of the wire like so:
 
@@ -226,7 +226,7 @@ Starting with the easier resistor wire (easier because direction of component do
 
 With that done we can move on to point 2, which is where we solder the other end of the resistor wire.
 
-Moving on to point 3, we need to make sure we get the diode facing the correct way, otherwise it will block the opposite direction. On the diode, the side with the black strip is the cathode, that should be facing away from point 3. 
+Moving on to point 3, we need to make sure we get the diode facing the correct way, otherwise it will block the opposite direction. On the diode, the side with the black strip is the cathode, that should be facing away from point 3.
 
 ![console.jpg](/assets/images/xbox_360_rgh/rgh_point_2_3.jpg)
 
@@ -244,9 +244,9 @@ And with the heat shrink properly applied:
 
 You can optionally secure the wires in place with some kapton tape to stop it moving around when you reassemble the console.
 
-### Booting Into Xell
+## Booting Into Xell
 
-At this point, ***disconnect your ESP32 from the console***, otherwise you may get some booting issues. Connect HDMI and power to the console, reattach the front panel PCB, and press the power button (or you can use the eject button on the left of the console). And wait for Xell to hopefully boot up!
+At this point, **_disconnect your ESP32 from the console_**, otherwise you may get some booting issues. Connect HDMI and power to the console, reattach the front panel PCB, and press the power button (or you can use the eject button on the left of the console). And wait for Xell to hopefully boot up!
 
 ![console.jpg](/assets/images/xbox_360_rgh/xell.jpg)
 
@@ -256,7 +256,7 @@ Once Xell has completed the boot sequence, you should see your CPU Key, and your
 
 ![console.jpg](/assets/images/xbox_360_rgh/xell_keys.jpg)
 
-### Generating Xebuild
+## Generating Xebuild
 
 Now that we have our CPU key, we can go back to J-Runner and enter this key into the **CPU Key:** entry. Once the key has been entered, J-Runner automatically decrypts and checks that the decrypted contents is valid - if it isn't, check that you've entered the key correctly.
 
@@ -270,10 +270,10 @@ Once this has flashed, disconnect the ESP32 from the computer, and turn the cons
 
 Congratulations if you got this far, you have successfully RGH'd your console (or learned how to do so). You can de-solder the NAND flash wires now if you want, or just disconnect the ESP32 and leave them in there (just make sure they aren't touching anything important) - up to you!
 
-## Conclusion
+# Conclusion
 
 Job done! Now, you can install any homebrew software you like, you can copy across DashLaunch on a USB stick to set up an FTP server and transfer all of the content you want. You can install custom dashboards such as Aurora, emulators, and [all of this fun stuff](https://www.360-hq.com/xbox360-homebrew.html).
 
 RGH is an excellent hack, and it blew the security of the Xbox 360 wide open.
 
-*Note: I don't encourage piracy of any sort!*
+_Note: I don't encourage piracy of any sort!_

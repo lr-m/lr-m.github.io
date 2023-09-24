@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🐛️ Analysing a Dirt-cheap Router [4]: Process Continuation + Shellcode"
+title : "📡 Analysing a Dirt-cheap Router [4]: Process Continuation + Shellcode"
 toc: true
 toc_sticky: true
 categories:

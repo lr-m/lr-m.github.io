@@ -1,6 +1,6 @@
 ---
 published: true
-title : "🐛️ Analysing a Dirt-cheap Router [2] : Finding Bugs"
+title : "📡 Analysing a Dirt-cheap Router [2] : Finding Bugs"
 toc: true
 toc_sticky: true
 categories:
