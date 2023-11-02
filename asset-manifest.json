@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b56291e1.css",
-    "main.js": "/static/js/main.206e363b.js",
+    "main.js": "/static/js/main.3546edb7.js",
     "static/js/971.83e9ba99.chunk.js": "/static/js/971.83e9ba99.chunk.js",
     "static/js/634.15f61877.chunk.js": "/static/js/634.15f61877.chunk.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
@@ -13,10 +13,11 @@
     "static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.md": "/static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.52e1b944490f4dcac437.md",
     "static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.md": "/static/media/vr-2023-06-03-analysing-a-dirt-cheap-router_part_4.02f471e57f50f7b85988.md",
     "static/media/github.png": "/static/media/github.0937c07b6bd353d2f4ce.png",
+    "static/media/ai-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.md": "/static/media/ai-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.ab5a3d926fa49a44f0cc.md",
     "static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.md": "/static/media/vr-2022-12-22-analysing-a-dirt-cheap-router.75a5f13dbbefec004440.md",
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
     "static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.md": "/static/media/vr-2023-08-25-analysing-a-dirt-cheap-router_part_5.90c0038a828c891f3b5c.md",
-    "static/media/vr-2023-09-20-analysing_a_wireless_network_camera_part_1.md": "/static/media/vr-2023-09-20-analysing_a_wireless_network_camera_part_1.fe015b83e2fd0ed1f707.md",
+    "static/media/vr-2023-09-20-analysing_a_wireless_network_camera_part_1.md": "/static/media/vr-2023-09-20-analysing_a_wireless_network_camera_part_1.65629543f7030b0360e7.md",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.1071afecef2f007e5a3e.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
     "static/media/co-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/co-2023-08-02-modding-xbox-360-with-rgh.49d468e51c433560de68.md",
@@ -29,11 +30,11 @@
     "static/media/about-me.md": "/static/media/about-me.5a37af31487545d2eb0d.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.b56291e1.css.map": "/static/css/main.b56291e1.css.map",
-    "main.206e363b.js.map": "/static/js/main.206e363b.js.map",
+    "main.3546edb7.js.map": "/static/js/main.3546edb7.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b56291e1.css",
-    "static/js/main.206e363b.js"
+    "static/js/main.3546edb7.js"
   ]
 }
