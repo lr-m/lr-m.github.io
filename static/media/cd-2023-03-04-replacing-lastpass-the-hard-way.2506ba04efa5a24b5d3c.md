@@ -178,7 +178,7 @@ The password entries consist of three elements:
 - _Username/email_
 - _Password_
 
-When the user specifies they want to view passwords, the device prints a navigatable list of password names in alphabetical order - this makes locating the passwords a quicker process. The IR remote is then used to specify which password the user would like to view, and the _OK_ button on the remote is pressed to bring up all of the password details. The user can then navigate back to the password list with '#' on the remote.
+When the user specifies they want to view passwords, the device prints a navigable list of password names in alphabetical order - this makes locating the passwords a quicker process. The IR remote is then used to specify which password the user would like to view, and the _OK_ button on the remote is pressed to bring up all of the password details. The user can then navigate back to the password list with '#' on the remote.
 
 ![pwd.PNG](/assets/images/replacing_lastpass_the_hard_way/pwd.PNG)
 
@@ -237,7 +237,7 @@ The image below shows the bits and their associated blocks being allocated and r
 
 ## Wallet Phrases
 
-The way we are going to store wallet entries is slightly different to passwords. We have to deal with wallet entries having varying numbers of phrases, storing them in sequence would result in storage inefficiencies after repeated additions and deletions of wallet keys. If we were to delete an entry in the middle, we would have to move all of the memory after the entry down, which is a lot of temporarlly expensive memory writes.
+The way we are going to store wallet entries is slightly different to passwords. We have to deal with wallet entries having varying numbers of phrases, storing them in sequence would result in storage inefficiencies after repeated additions and deletions of wallet keys. If we were to delete an entry in the middle, we would have to move all of the memory after the entry down, which is a lot of temporally expensive memory writes.
 
 I fixed this issue by having a large array of 'blocks' that store 32 bytes, similar to that seen in the password storage mechanism. Instead of storing a list of words, I store a list of indexes that store the words that comprise the entry. This minimises the storage inefficiencies, and drastically reduces the amount of write operations needed.
 
@@ -281,7 +281,7 @@ Here is the hard bit - we need to somehow construct a protocol that authenticate
 }
 ```
 
-- Vault recieves this, creates a challenge nonce, and encrypts this with the randomly generated session key:
+- Vault receives this, creates a challenge nonce, and encrypts this with the randomly generated session key:
 
 ```
 -json
@@ -307,7 +307,7 @@ Here is the hard bit - we need to somehow construct a protocol that authenticate
 "urbfh0nGW0wFBm08ebqPiQf+2EbtN3JzvgExpKQZqrDepR1OVRiXgwGOuIJJEkGnVBx7gS9YeHG0s9zuDUmQnBOa0ee4b9W7f3rNeWPtwP4r7vLaLRBoxDDEnJ1HNe+I99k1XG9UgCVxCW+iMZ7q9ADSvjLn8RTCbUrC6b0XVWWWfMRMVwjK2dpKa8u9dpxunJ1HNe+I99k1XG9UgCVxCW+iMZ7q9ADSvjLn8RTCbUrC6b0XVWWWfMRMVwjK2dpKa8u9dpxu"
 ```
 
-- Vault recieves the data, decrypts with the session key, and checks if the recieved encrypted nonce bytes match the generated nonce encrypted with the correct master key. If so, it handles the request and responds, otherwise, it responds with an error.
+- Vault receives the data, decrypts with the session key, and checks if the received encrypted nonce bytes match the generated nonce encrypted with the correct master key. If so, it handles the request and responds, otherwise, it responds with an error.
 - Client gets the response, decrypts with the session key, and presents the response to the user:
 
 ```
@@ -335,7 +335,7 @@ The encryption used for the communications is [AES-CTR](https://rweather.github.
 
 Note the use of base64 encoding throughout the communication protocol (also a bit of hexdump for the nonces to spice things up), this allows the encrypted bytes to be sent between the client and the vault without any issues.
 
-More could be done to enchance the security of this element of the device, such as exiting remote mode when malformed entries are detected, the session/master key checks fail, or a period of time with no requests passes. This is left as an exercise to the reader ;)
+More could be done to enhance the security of this element of the device, such as exiting remote mode when malformed entries are detected, the session/master key checks fail, or a period of time with no requests passes. This is left as an exercise to the reader ;)
 
 ## Python Client
 
@@ -349,11 +349,11 @@ This 'client' is a pretty simple terminal based program, sort of like a command 
 
 If the IP address is wrong, the master password is incorrect, or the session key is wrong, this client won't be very useful! I've tried to design it with users that are not familiar with command line interfaces in mind, and tried to provide useful feedback when things aren't working.
 
-Each command represents a function stored in a dictionary of command handler functions that achieve the desired functionality. The handler will prompt for more information about the requsted entry from the user if this is required.
+Each command represents a function stored in a dictionary of command handler functions that achieve the desired functionality. The handler will prompt for more information about the requested entry from the user if this is required.
 
 ### Pretty Colours
 
-To try and make the client a little bit more exiting, I opted to add a sprinking of ASCII art, as well as use ANSI color escape codes to jazz up the colours a little bit.
+To try and make the client a little bit more exiting, I opted to add a sprinkling of ASCII art, as well as use ANSI color escape codes to jazz up the colours a little bit.
 
 To create the ASCII art **VAULT** banner, I used [Figlet](http://www.figlet.org/), which has a python library **pyfiglet** that can generate these ASCII fonts without having to manually print the strings yourself. I opted for the _slant_ font as this is simple and looks good! Here is the code that prints the ASCII art:
 

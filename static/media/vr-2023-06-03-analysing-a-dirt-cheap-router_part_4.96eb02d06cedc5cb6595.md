@@ -38,7 +38,7 @@ As you can see from the crash dump, we have determined the expected values for *
 
 ![3_bytes_7_bits_expected.png](/assets/images/analysing_a_dirt_cheap_router_part_4/3_bytes_7_bits_expected.png)
 
-The last bit has 2 possible values, so we can just try both of these values for *$s0* in the overflow until there is not a crash - the last byte was determined to be *0x0* which makes sense because allignment.
+The last bit has 2 possible values, so we can just try both of these values for *$s0* in the overflow until there is not a crash - the last byte was determined to be *0x0* which makes sense because alignment.
 
 So, here are the values we need to get back into the respective registers to continue execution:
 
@@ -50,7 +50,7 @@ So, here are the values we need to get back into the respective registers to con
 | *$s3* | *0x802ab9f4* |
 | *$ra* | *0x801888e0* |
 
-The last thing to mention about these addresses is that they contain 0's, which we obviously cannot send as this is a *strcpy* overflow. However, as long as *$s0* and *$s1* are alligned on the 4-byte boundary, they can be basically any value and nothing seems to break, which is good for us! I changed all of the 0's to 4's and tested with these values and there was no crash, nice.
+The last thing to mention about these addresses is that they contain 0's, which we obviously cannot send as this is a *strcpy* overflow. However, as long as *$s0* and *$s1* are aligned on the 4-byte boundary, they can be basically any value and nothing seems to break, which is good for us! I changed all of the 0's to 4's and tested with these values and there was no crash, nice.
 
 ## Reversing Stack Layout
 
@@ -184,7 +184,7 @@ The instruction cache functions on the locality principle, taking advantage of t
 
 ### Data Cache
 
-The data cache (a.k.a D-cache), is a high-speed memory that stores recently accessed data values. Its goal is to enhance data access efficiency by minimising the time necessary to read or write data to/from main memory. The D-cache stores a copy of frequently used data items, such as variables and arrays, so that the processor can retrieve them quickly without touching slower main memory. It operates in pretty much the exacty same way as the instruction cache.
+The data cache (a.k.a D-cache), is a high-speed memory that stores recently accessed data values. Its goal is to enhance data access efficiency by minimising the time necessary to read or write data to/from main memory. The D-cache stores a copy of frequently used data items, such as variables and arrays, so that the processor can retrieve them quickly without touching slower main memory. It operates in pretty much the exactly same way as the instruction cache.
 
 Similar to the instruction cache, the data cache also exploits the principle of locality. It takes advantage of temporal locality by storing recently accessed data items and spatial locality by fetching data in larger chunks (cache lines) rather than accessing individual bytes.
 

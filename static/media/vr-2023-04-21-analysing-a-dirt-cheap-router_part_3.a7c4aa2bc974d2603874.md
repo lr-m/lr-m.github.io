@@ -52,7 +52,7 @@ We can see a dump of the registers when the router crashes, knowledge of each re
 
 ## Instructions
 
-**_Note:_** In MIPS assembly, if brackets are around a register value, e.g. ($s0), the instruction is referring to the value pointed to by the memory address strored in the registers (indirect addressing) - kind of like dereferencing a pointer in C.
+**_Note:_** In MIPS assembly, if brackets are around a register value, e.g. ($s0), the instruction is referring to the value pointed to by the memory address stored in the registers (indirect addressing) - kind of like dereferencing a pointer in C.
 
 - **move $dst, $src** : Moves the contents of _$src_ to _$dst_ - this is obviously useful if you have a gadget for a specific register, say _$a0_, but the value is in _$s0_, you would find a gadget contianing **move $a0, $s0**.
 - **lw $dst, offset($src)** : Loads a word from memory located at _$src_ + offset into _$dst_ - This is usually the instruction that gets our foot in the door, as it loads some stack pointer offset into _$ra_ (**lw $ra, 4($sp)** for example)
@@ -68,7 +68,7 @@ MIPS has what can be a pretty annoying feature called a branch delay slot. The b
 
 The purpose of the branch delay slot is to improve performance by allowing the instruction pipeline to continue executing instructions while the branch or jump instruction is being resolved. By executing the branch delay slot instruction, the pipeline is kept full and the processor can make better use of its execution units.
 
-When constructing a chain, it is important to not forget about this feature, otherwise you can spend ages making a chain only to realise that your very important SOCK*DGRAM stored in *$a0\_ gets OR'd by **ori $a1, $a1, 0x6934** before the jump. Definitely not speaking from experience.
+When constructing a chain, it is important to not forget about this feature, otherwise you can spend ages making a chain only to realise that your very important *SOCK_DGRAM* stored in *$a0* gets OR'd by **ori $a1, $a1, 0x6934** before the jump. Definitely not speaking from experience.
 
 ![sendto_meme.jpg](/assets/images/analysing_a_dirt_cheap_router_part_3/sendto_meme.jpg)
 
@@ -342,7 +342,7 @@ struct sockaddr_in {
 
 We need to create a _sockaddr_in_ struct containing the port and IP address we would like to send the message to. As we cannot send null bytes, we will need to find some memory that we can copy containing the bytes we need.
 
-To indicate _sin_family_ AF*INET in our struct, the first 2 bytes need to be \_0x0* and _0x2_. The next 2 bytes specify the port number, so anything works. I found _0x0_ _0x2_ _0x13_ _0x24_ in the firmware image - so we will be sending messages over port 4900.
+To indicate _sin_family_ *AF_INET* in our struct, the first 2 bytes need to be *0x0* and _0x2_. The next 2 bytes specify the port number, so anything works. I found _0x0_ _0x2_ _0x13_ _0x24_ in the firmware image - so we will be sending messages over port 4900.
 
 All we need to do now to have a valid _sockaddr_in_ struct is append the IP address. As most of this is done within the _sendto_ call construction, I will include the gadgets used in the next section.
 

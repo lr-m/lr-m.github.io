@@ -135,13 +135,13 @@ Now we have the file on the Pi!
 
 ## FTP Server
 
-As this camera has an SD card slot, I was expecting there to be an FTP server running (confirmed later with port scans). Connecting to the cameras FTP server with *FileZilla*, and trying a bunch of default creds like '*root*' and '*admin*' yielded complete access to the filesystem, binaries and all. The username/password was *root/no password* - very secure. 
+As this camera has an SD card slot, I was expecting there to be an FTP server running (confirmed later with port scans). Connecting to the cameras FTP server with *FileZilla*, and trying a bunch of default credentials like '*root*' and '*admin*' yielded complete access to the filesystem, binaries and all. The username/password was *root/no password* - very secure. 
 
 I used *FileZilla* to basically extract the entire filesystem so that I have everything on my local machine, and this worked great! Much easier than running *netcat* on every file in the binary.
 
 # Port Enumeration
 
-As we already have access to a root shell throught the UART, there isn't really much point in using *nmap* to enumerate the open ports - a *netstat* output is much more valuable.
+As we already have access to a root shell through the UART, there isn't really much point in using *nmap* to enumerate the open ports - a *netstat* output is much more valuable.
 
 ```
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
@@ -167,7 +167,7 @@ Lets first investigate the local ports and see if they do anything interesting.
 
 ### Port 8782
 
-This port is created by the *cmd_serverd* process, it basically just sits waiting for connections, and chucks any recieved packets into either a call to **system()** or a call to **popen()**, depending on wether a result is expected.
+This port is created by the *cmd_serverd* process, it basically just sits waiting for connections, and chucks any received packets into either a call to **system()** or a call to **popen()**, depending on wether a result is expected.
 
 Nothing interesting to note on this port aside from the fact if we see another process sending messages to this port, it is safe to assume that it is executing commands!
 
@@ -227,7 +227,7 @@ This appears to be able to bind to a network with supplied credentials. The cred
 
 Once the credentials are extracted, they are saved to */tmp/wifi_info* and a bash script is called to connect to the network.
 
-A funny quirk of this method is that if one of the bytes of the SSID/password is the same as the corresponsing XOR key byte, a null (*0x0*) will be present in the string which will prematurely terminate the provided credential. 
+A funny quirk of this method is that if one of the bytes of the SSID/password is the same as the corresponding XOR key byte, a null (*0x0*) will be present in the string which will prematurely terminate the provided credential. 
 
 #### *ap_update_name*
 
@@ -238,7 +238,7 @@ The most interesting command is the *ap_update_name* command, this appears to pe
 {"operator": "ap_update_name", "name": "test", "length": 15, "md5": "ffffffffffffffffffffffffffffffff"}
 ```
 
-The socket accepts this, and sets a flag that essentially tells the socket to recieve any incoming data and put it directly into the file with the provided filename until the amount of data recieved is equal to the provided length. It then uses the *md5sum* command to calculate the md5 of the saved file, if the md5 matches that provided in the initial message, the *update.sh* script is called to update the device firmware.
+The socket accepts this, and sets a flag that essentially tells the socket to receive any incoming data and put it directly into the file with the provided filename until the amount of data received is equal to the provided length. It then uses the *md5sum* command to calculate the md5 of the saved file, if the md5 matches that provided in the initial message, the *update.sh* script is called to update the device firmware.
 
 ### Port 6789
 
@@ -257,7 +257,7 @@ The packet structure is quite interesting:
 | string | String 2 |
 | short | Checksum |
 
-This process appears to be for running test binaries. When a packet is recieved, it is first parsed into a struct. The code first checks if the *last_filename* object in memory is not empty. If it isn't, it uses a script to kill the process with the provided name. Once this is done, if the 3rd byte is 4, the service is restarted? Otherwise, an **access()** call checks if the provided filename in string 1 is valid - if this is the case, it makes it executable with *chmod +x* and executes the binary. If the 2nd string is populated, it will give this to the test binary as a parameter. Once all of that has been completed, it checks if the 4th byte of the buffer is not 2, and if it isn't, it writes string 1 into the *last_file* string in memory.
+This process appears to be for running test binaries. When a packet is received, it is first parsed into a struct. The code first checks if the *last_filename* object in memory is not empty. If it isn't, it uses a script to kill the process with the provided name. Once this is done, if the 3rd byte is 4, the service is restarted? Otherwise, an **access()** call checks if the provided filename in string 1 is valid - if this is the case, it makes it executable with *chmod +x* and executes the binary. If the 2nd string is populated, it will give this to the test binary as a parameter. Once all of that has been completed, it checks if the 4th byte of the buffer is not 2, and if it isn't, it writes string 1 into the *last_file* string in memory.
 
 How nice of them to leave some testing code on their production build for us to mess with!
 
@@ -287,7 +287,7 @@ Remember the *ap_update_name* command that creates files and allows you to write
 
 ## Port 6000 - Command Injection
 
-Another issue with the *ap_update_name*, this time its a nice and simple command injection. To calculate the md5 of the provided file, they use the *md5sum* command. However, as there are no checks done on the filename, you can just slap a '*;*', '*&&*', or anything else on the end of the filename to achieve command injection. For example, doing the *ap_update_name* command with the filename **test; echo hello > /tmp/hello** will create a file called *hello* in the */tmp* directory - but only once the entire file has been recieved (well, the number of bytes you gave as the length in the first packet must be sent), at that point the md5 check occurs.
+Another issue with the *ap_update_name*, this time its a nice and simple command injection. To calculate the md5 of the provided file, they use the *md5sum* command. However, as there are no checks done on the filename, you can just slap a '*;*', '*&&*', or anything else on the end of the filename to achieve command injection. For example, doing the *ap_update_name* command with the filename **test; echo hello > /tmp/hello** will create a file called *hello* in the */tmp* directory - but only once the entire file has been received (well, the number of bytes you gave as the length in the first packet must be sent), at that point the md5 check occurs.
 
 ![6000_cmd_injection.jpg](/assets/images/analysing_a_wireless_network_camera_part_1/6000_cmd_injection.png)
 
@@ -327,18 +327,16 @@ The buffer that is used in the construction and execution of commands with **sys
 
 ![6789_stack_overflow.jpg](/assets/images/analysing_a_wireless_network_camera_part_1/6789_stack_overflow.png)
 
-## Port 6789 - Heap Overflow
+## Port 6789 - Global Overflow
 
-There is a heap overflow in the **strcpy()** call that copies the first payload string into the last_name parameter in the heap. Unfortunately, the only thing next to this string on the heap is some config values, and even if there was something interesting, we can only send things like '..' and '/' otherwise the **access()** call on the first string will not pass. The only thing you can do with it is crash the process by requesting config values on port 8192 after the config values are overwritten.
+There is a global overflow in the **strcpy()** call that copies the first payload string into the last_name parameter in the global region. Unfortunately, the only thing next to this string in the global region is some config values, and even if there was something interesting, we can only send things like '..' and '/' otherwise the **access()** call on the first string will not pass. The only thing you can do with it is crash the process by requesting config values on port 8192 after the config values are overwritten.
 
-![6789_heap_overflow.jpg](/assets/images/analysing_a_wireless_network_camera_part_1/6789_heap_overflow.png)
+![6789_global_overflow.jpg](/assets/images/analysing_a_wireless_network_camera_part_1/6789_global_overflow.png)
 
 ## Port 8192 - Stack Overflow
 
-In port 8192, it pulls values from the config files and copies them into a small buffer on the stack, if we use the file write we saw earlier to modify this config, we can simply make these files large and overflow the output buffer with our values. There are probably a huge amount of these kind of seconday bugs as a result of the file write we found, but I thought I'd include this one as it seems to be the easiest to exploit remotely.
+In port 8192, it pulls values from the config files and copies them into a small buffer on the stack, if we use the file write we saw earlier to modify this config, we can simply make these files large and overflow the output buffer with our values. There are probably a huge amount of these kind of secondary bugs as a result of the file write we found, but I thought I'd include this one as it seems to be the easiest to exploit remotely.
 
 # Conclusion
 
 So we've torn the camera to pieces, had a look at the hardware, reversed the local/exposed ports on the access point component of the configuration process, and found a bunch of bugs. There are probably a load more bugs here, but it is highly unlikely these will be useful during normal operation - who knows, we might get lucky!
-
-In the next blog, we'll take a look at the app and make a start on reversing the cloud component of this camera.

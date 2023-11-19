@@ -36,11 +36,11 @@
 - Discovery of multiple bugs in various embedded systems
 - Simple binary exploitation on multiple architectures
 - Mobile application reverse engineering using frida and jadx
-- Creation of lots of Python programs enabling further VR (exploits, scripts for interaction with device)
 - Binary emulation using Qiling
+- Hardware (dumping firmware, attaching to debug interfaces)
+- Writing of technical reports
+- Coding in Python, C and some C++
 - Acted as manager for Research Engineer intern, came up with a project for them to do and supported them throughout the process
-- Some hardware experience (dumping firmware, attaching to debug interfaces)
-- Writing of technical reports with other team members
 
 ### Cheltenham - *Cyber Insights Summer School 2021*
 *June 2021 - September 2021*

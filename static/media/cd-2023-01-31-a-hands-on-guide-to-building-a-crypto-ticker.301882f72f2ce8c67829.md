@@ -24,7 +24,7 @@ This blog highlights how I built my crypto ticker from scratch, and also act as 
 
 # ESP8266 Development
 
-The ESP8266 is a small microcontroller that boasts WiFi functionality. It is commonplace in IoT devices, and is a staple of several hoppyist electronics projects. It has plenty of options to allow you to construct complex systems, and connect peripherals using the plethora of GPIO pins. I used the NodeMCU 1.0 ESP8266 development board for this project.
+The ESP8266 is a small microcontroller that boasts WiFi functionality. It is commonplace in IoT devices, and is a staple of several hobbyist electronics projects. It has plenty of options to allow you to construct complex systems, and connect peripherals using the plethora of GPIO pins. I used the NodeMCU 1.0 ESP8266 development board for this project.
 
 ![nodemcu.png](/assets/images/a_hands_on_guide_to_building_a_crypto_ticker/nodemcu.png)
 
@@ -178,7 +178,7 @@ I also wanted to add a mode where multiple coins were visible at the same time, 
 
 ## Portfolio
 
-All of the other projects I saw before that utilised an ESP8266 never had the option of adding your own portfolio, this was a feature I definitely wanted. I achieved this by adding an **amount** property to each coin, which indicates how much of the coin you own. There is a menu on the device which allows you to select one of the coins, and type the amount you own with the number keys on the IR remote. The device calulcate the value of your portfolio by simply iterating over all of the coins, multiplying their price by the amount owned, and summing all of this to get the value.
+All of the other projects I saw before that utilised an ESP8266 never had the option of adding your own portfolio, this was a feature I definitely wanted. I achieved this by adding an **amount** property to each coin, which indicates how much of the coin you own. There is a menu on the device which allows you to select one of the coins, and type the amount you own with the number keys on the IR remote. The device calculate the value of your portfolio by simply iterating over all of the coins, multiplying their price by the amount owned, and summing all of this to get the value.
 
 I decided to have a simple 'breakdown' of the portfolio as the first mode, which lists all of the coins, how much you own, and the 24 hour change. This is great for assessing the value of each asset at a quick glance:
 

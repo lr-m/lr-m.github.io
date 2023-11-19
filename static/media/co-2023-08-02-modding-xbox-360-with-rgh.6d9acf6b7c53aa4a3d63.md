@@ -54,7 +54,7 @@ The NAND stores a bunch of important firmware and data, it is a TSOP-48 package,
   - It is the central hub for accessing all of the Xbox 360 software, settings, playing games, etc.
 - Bootloader:
   - The bootloader is a small piece of code stored in the NAND, it is one of the first things to be executed when the Xbox is powered on.
-  - Its primary purpose is to initiate the boot pocess, and load the kernel into memory for execution.
+  - Its primary purpose is to initiate the boot process, and load the kernel into memory for execution.
 
 ![console.jpg](/assets/images/xbox_360_rgh/nand.jpg)
 
@@ -150,7 +150,7 @@ Now that we have our flash images, we can download and open a tool called J-Runn
 
 ![console.jpg](/assets/images/xbox_360_rgh/j_runner_pro.png)
 
-This tool has a bunch of functionality that is incredibly useful when performing RGH. Peform the following steps to generate the Xell image to flash onto the NAND:
+This tool has a bunch of functionality that is incredibly useful when performing RGH. Perform the following steps to generate the Xell image to flash onto the NAND:
 
 1. Click **Load Source** and select one of your NAND reads
 2. Click **Load Extra** and selected another NAND read, but not the same as the first one
@@ -218,7 +218,7 @@ I usually construct my wires with the component in the middle of the wire like s
 
 ![console.jpg](/assets/images/xbox_360_rgh/diode_resistor_soldered.jpg)
 
-With the wires constructed (make sure you put your heatshrink on them before you solder both points!), we can now locate the points we need to solder. To solder the points, I usually put some solder onto the end of my iron, dab the pad so that some of the solder sticks to it (not too much), apply solder to the end of the wire, rest the wire on the pad, apply heat, and they should merge together and form a good connection.
+With the wires constructed (make sure you put your heat-shrink on them before you solder both points!), we can now locate the points we need to solder. To solder the points, I usually put some solder onto the end of my iron, dab the pad so that some of the solder sticks to it (not too much), apply solder to the end of the wire, rest the wire on the pad, apply heat, and they should merge together and form a good connection.
 
 Starting with the easier resistor wire (easier because direction of component doesn't matter), locate point 1 as seen below, and solder the end of the resistor wire to the pad. The point is lodged between 2 components, so be careful and make sure you have something to rest on to give you a steadier hand:
 

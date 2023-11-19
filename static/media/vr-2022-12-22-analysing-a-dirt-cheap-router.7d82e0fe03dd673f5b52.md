@@ -39,13 +39,13 @@ PORT     STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 21.38 seconds
 ```
 
-Port 80 corresponds to the HTTP server used for configuration of the router, I will investiate the web server later. Ports 23 and 1780 are also open, port 23 is pretty much always telnet, 1780 is probably some UPnP port (maybe for Wifi Simple Config). Scanning the UDP ports yielded UPnP, DNS, and DHCP ports (52, 67 and 1900), so not very important.
+Port 80 corresponds to the HTTP server used for configuration of the router, I will investigate the web server later. Ports 23 and 1780 are also open, port 23 is pretty much always telnet, 1780 is probably some UPnP port (maybe for Wifi Simple Config). Scanning the UDP ports yielded UPnP, DNS, and DHCP ports (52, 67 and 1900), so not very important.
 
 ## Telnet?
 
 The telnet port is interesting, exposed telnet interfaces are pretty common on older routers, some of them even have no password if you're lucky (or unlucky if its your router).
 
-We know that the default credentials use the username _admin_, trying this yields an **invalid username** repsonse. Next I tried _root_, and this got me to the password entry section. I tried _admin_, empty input, and a bunch of other passwords - none of which yielded anything interesting. Looks like we will have to have a dig around the firmware if we can get to it!
+We know that the default credentials use the username _admin_, trying this yields an **invalid username** response. Next I tried _root_, and this got me to the password entry section. I tried _admin_, empty input, and a bunch of other passwords - none of which yielded anything interesting. Looks like we will have to have a dig around the firmware if we can get to it!
 
 # Hardware
 

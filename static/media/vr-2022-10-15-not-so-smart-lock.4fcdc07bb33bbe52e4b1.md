@@ -31,7 +31,7 @@ It is essential to have an understanding of the hardware we are working with bef
 
 ![rsz_12rsz_layout.png](/assets/images/not_so_smart_lock/rsz_12rsz_layout.png)
 
-The boards communicate via a connector, the devices use a UART (Universal Asynchronous Reciever-Transmitter) connection to talk to each other, and there are also some other pass-throughs for things like sound from the voice modulator chip to the speaker, and also power.
+The boards communicate via a connector, the devices use a UART (Universal Asynchronous Receiver-Transmitter) connection to talk to each other, and there are also some other pass-throughs for things like sound from the voice modulator chip to the speaker, and also power.
 
 ## Main Board
 
@@ -109,7 +109,7 @@ Let us start with the RFID functionality of the chip. It comes with two RFID car
 
 These cards are vulnerable to several attacks that allow simple retrieval of the keys that protect the blocks. The two main attacks are the [Nested Attack](http://www.cs.umd.edu/~jkatz/security/downloads/Mifare3.pdf), which requires knowledge of a key protecting another block on the device (usually a default key), and the [Darkside Attack](https://eprint.iacr.org/2009/137.pdf), which requires the NACK bug to be present (it is on the provided cards!). We are not off to a great start!
 
-The cards identify themselves with a 4-byte UID (unique identifier), these are fixed. If you want to change the UID of the card, you need something called a magic card, and I used a proxmark3. These magic cards can be used to imitate/clone any Mifare Classic card in seconds, which is very useful. Some older locks utilised UID-only checks, which can be completely bypassed if you have a card with a writable UID!
+The cards identify themselves with a 4-byte UID (unique identifier), these are fixed. If you want to change the UID of the card, you need something called a magic card, and I used a proxmark3. These magic cards can be used to imitate/clone any Mifare Classic card in seconds, which is very useful. Some older locks utilised UID-only checks, which can be completely bypassed if you have a card with a writeable UID!
 
 ## Security Mechanisms
 

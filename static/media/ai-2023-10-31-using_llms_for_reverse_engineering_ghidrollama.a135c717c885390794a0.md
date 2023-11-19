@@ -45,7 +45,7 @@ The brain needs sensors to collect stimuli to process, in this case imagine that
 
 A couple of extra bits to explain, the laser is there to eliminate cars that go the wrong direction, as a car going the wrong direction would get the same fitness score as a car going in the right direction, so this keeps things in order. 
 
-There is also the concept of bias in machine learning - each node in the network has a bias. The main function of a bias is to provide every node with a trainable constant value (in addition to the normal inputs that the node recieves). Without the bias, a poorer fit may be achieved by the model. [This video provides a much better explanation](https://www.youtube.com/watch?v=HetFihsXSys).
+There is also the concept of bias in machine learning - each node in the network has a bias. The main function of a bias is to provide every node with a trainable constant value (in addition to the normal inputs that the node receives). Without the bias, a poorer fit may be achieved by the model. [This video provides a much better explanation](https://www.youtube.com/watch?v=HetFihsXSys).
 
 Here are some of the best cars after several generations of training:
 
@@ -66,7 +66,7 @@ The order of outputs on the right is as follows:
 
 As you can see, it is far more focused on turning left, right and accelerating, as it wants to go as fast as possible (to try and maximise the fitness metric by outrunning the laser!). It is essentially treating accelerate as 'do nothing' because it doesn't know its current speed (only the directions are fed into the network), and it doesn't need to slow down as it can still make the corners at max speed - so the output layer could be 3 nodes rather than 5. It is pretty fun making little neural networks and figuring out why they come up with their solution.
 
-So, thats how a small neural network works, training of the neural network with backpropagation is a whole other complicated endevour, so I won't be going into it in this blog! For the curious, [this blog](https://towardsdatascience.com/understanding-backpropagation-abcc509ca9d0) gives a simple example with a step-by-step explanation (pretty math-heavy, you've been warned!).
+So, thats how a small neural network works, training of the neural network with backpropagation is a whole other complicated endeavour, so I won't be going into it in this blog! For the curious, [this blog](https://towardsdatascience.com/understanding-backpropagation-abcc509ca9d0) gives a simple example with a step-by-step explanation (pretty math-heavy, you've been warned!).
 
 ## Is that all an LLM is?
 
@@ -80,7 +80,7 @@ There is plenty of other stuff that makes LLMs work so well. The attention mecha
 
 # LLM Examples
 
-Obviously the main example of an LLM is ChatGPT, so we'll start there, but there is a huge amount of work in the open source community to create open-source models that are comparible to ChatGPT.
+Obviously the main example of an LLM is ChatGPT, so we'll start there, but there is a huge amount of work in the open source community to create open-source models that are comparable to ChatGPT.
 
 ## ChatGPT
 
@@ -92,7 +92,7 @@ It is based on GPT-3.5, but also has support for GPT-4. The model itself (GPT-3.
 
 ## Llama-2
 
-Llama-2 is a model created by Meta, it was released on July 2023, and the thing that distinguishes it the most from ChatGPT is that is is an open model. It is free for reserach and commercial use, meaning that pretty much anyone can download the model and start using it. 
+Llama-2 is a model created by Meta, it was released on July 2023, and the thing that distinguishes it the most from ChatGPT is that is is an open model. It is free for research and commercial use, meaning that pretty much anyone can download the model and start using it. 
 
 The release of this model was probably the second biggest AI 'event' in the last year, and as the model is open sourced, people can always retrain the model on different data sets and create variations that are fine tuned for various purposes, such as writing code or having a specific personality.
 
@@ -112,7 +112,7 @@ You can then install one of the models listed [here](ollama.ai/library) and star
 ollama run codellama:7b
 ```
 
-There are a bunch of models available for download (not just ***codellama***). However, it is worth remembering that these models are very CPU/GPU intensive, and also RAM hungry. Some of the much larger models required up to 200GB of RAM! If you are limited to 32GB of RAM, you should stick to a maximum of 40B paramaters, but remember that the more parameters there are, the slower the model usually is.
+There are a bunch of models available for download (not just ***codellama***). However, it is worth remembering that these models are very CPU/GPU intensive, and also RAM hungry. Some of the much larger models required up to 200GB of RAM! If you are limited to 32GB of RAM, you should stick to a maximum of 40B parameters, but remember that the more parameters there are, the slower the model usually is.
 
 I've found ***code-phind*** to be good for coding stuff, and ***falcon:40b*** to be good for general use. But feel free to download all of the models and have a play!
 
@@ -150,7 +150,7 @@ I won't go over the specifics of the script here, but here is what it does/how i
 - Once model is selected, opens another window asking the user what they want to use the model for
 - Once this is selected, any additional functionality-specific information is requested
 - Now that the script knows what the user wants to do, it sends the request to the API and awaits the response
-- By default, the Ollama API responds with a stream of data, so we can print each word as we recieve it
+- By default, the Ollama API responds with a stream of data, so we can print each word as we receive it
 - Once the 'done' parameter is set to true, we know the response has finished, so the script prints the total response time and exits
 
 The script is [on github](https://github.com/luke-r-m/GhidrOllama), feel free to have a look or download and use it!
@@ -176,11 +176,11 @@ Lets see how it performs!
 
 ## Function Explanation
 
-For this example, I made the model explain ***strcasecmp***:
+For this example, I made the model explain a decompiled form of ***strcasecmp*** with no symbols:
 
 > *This function takes two byte pointers as input, 'param_1' and 'param_2', and returns their difference in terms of the ASCII value. It compares the characters at each position in the strings, accounting for case differences (e.g., uppercase letters are considered equal to their lowercase counterparts). The function stops comparing characters once it finds a character that is different between the two strings. If both strings are the same, the function returns 0.*
 
-That is a [perfect explanation](https://www.ibm.com/docs/en/i/7.2?topic=functions-strcasecmp-compare-strings-without-case-sensitivity) of what ***strcasecmp*** does, it even figured out that letters of different cases will stil match up.
+That is a [perfect explanation](https://www.ibm.com/docs/en/i/7.2?topic=functions-strcasecmp-compare-strings-without-case-sensitivity) of what ***strcasecmp*** does, it even figured out that letters of different cases will still match up.
 
 ## Function Naming
 
@@ -301,7 +301,7 @@ Some of the other outputs are pretty questionable. For example, the hardcoded co
 
 Overall, for a pretty small model, it does a decent job of coming up with suggestions for things to look at within a function, but more context is definitely required to take this further.
 
-## Explaning Instructions
+## Explaining Instructions
 
 Aside from analysing functions, how good is it at acting as a dictionary for assembly instructions? Here is an example on the ***bne v0,zero,LAB_8016eed4*** instruction:
 
@@ -321,7 +321,7 @@ This is a straight to the point explanation of what the instruction does, the fo
 
 ## Explaining Assembly
 
-So it can explan instructions, but what about small chunks of assembly code? Lets try it with the following:
+So it can explain instructions, but what about small chunks of assembly code? Lets try it with the following:
 
 ```
 -mipsasm
@@ -337,11 +337,11 @@ Here is the output of the model:
 
 > *The code then checks if the return value (v0) is zero and jumps to address 0x8016eed4 if it is not. If v0 is zero, the code continues executing past this point.*
 
-From the output, it seems to have taken its understanding of the individual instructions, infered the full purpose of the block of instructions, and provided a clear explanation.
+From the output, it seems to have taken its understanding of the individual instructions, inferred the full purpose of the block of instructions, and provided a clear explanation.
 
 # Conclusion
 
-To be honest, I was very surprised at how effective the worst codellama model was at understanding the code. I was under the impression it would be fine-tuned to be amazing at code generation, not code unstanding. However, I learned that codellama has a feature called *infilling* turned on, which means it can complete code/fill in gaps in code. Obviously some understanding of existing code is required to perform this effectively, which I believe is making it unintentionally quite good at reverse engineering!
+To be honest, I was very surprised at how effective the worst *codellama* model was at understanding the code. I was under the impression it would be fine-tuned to be amazing at code generation, not code understanding. However, I learned that *codellama* has a feature called *infilling* turned on, which means it can complete code/fill in gaps in code. Obviously some understanding of existing code is required to perform this effectively, which I believe is making it unintentionally quite good at reverse engineering!
 
 I have been using this script in my day-to-day Ghidra-ing and honestly I've found it quite useful for offloading tedious tasks, or saving me a Google search. You can also bind it to the 'Q' key for very easy access. [Give it a try](https://github.com/luke-r-m/GhidrOllama), and let me know what you think!
 

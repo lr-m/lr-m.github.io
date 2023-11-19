@@ -33,13 +33,13 @@ Here is what you get in the package:
 
 ![console.jpg](/assets/images/cheap_and_cheerful_400_in_1/console.png)
 
-The console is great for the price, the software isn't the most well made, but it gets the job done. There are a decent selection of games, the legality of which is questionable. Some notable features are Pacman, Tetris 2, and Super Mario Bros. It is worth noting that there are not 400 unique games, there are several duplicates. Looking online at other reviews/comments on youtube videos indicates that there are roughly 310 unique games.
+The console is great for the price, the software isn't the most well made, but it gets the job done. There are a decent selection of games, the legality of which is questionable. Some notable features are Pacman, Tetris 2, and Super Mario Bros. It is worth noting that there are not 400 unique games, there are several duplicates. Looking online at other reviews/comments on Youtube videos indicates that there are roughly 310 unique games.
 
 I noticed that if you press all the alphabetic keys down and press reset at the same time, the test utility used by the developers pops up. This doesn't contain any interesting information, but it is pretty cool nonetheless!
 
 ![debug.jpg](/assets/images/cheap_and_cheerful_400_in_1/debug.png)
 
-The build quality is pretty good, and it would probably survive a drop or two. It also has volume control, a well backlit display (fixed brightness), rechargable Nokia-esque battery, and a display output. Some of the games also have a 2-player mode, which is an enjoyable experience, especially on Tetris 2.
+The build quality is pretty good, and it would probably survive a drop or two. It also has volume control, a well backlit display (fixed brightness), rechargeable Nokia-esque battery, and a display output. Some of the games also have a 2-player mode, which is an enjoyable experience, especially on Tetris 2.
 
 My biggest grumble with the device is that your high scores don't save, if I get a new high-score on Pacman the score is never saved for the next time I play. I can't complain too much as most of these games never had this functionality on their original console.
 
@@ -104,7 +104,7 @@ I used a micro-USB breakout board to make connecting the remote to the ESP easie
 
 ![esp32.PNG](/assets/images/cheap_and_cheerful_400_in_1/esp32.PNG)
 
-To confirm which devices were sending what information, I used the logic analyzer on the USB port when a controller is connected, and when a controller is not connected. The console sends the 'clock' pulse, as well as the 'options' pulse, and the controller sends its response. I'll need to configure the ESP32 to send the same pulses that are sent by the console.
+To confirm which devices were sending what information, I used the logic analyser on the USB port when a controller is connected, and when a controller is not connected. The console sends the 'clock' pulse, as well as the 'options' pulse, and the controller sends its response. I'll need to configure the ESP32 to send the same pulses that are sent by the console.
 
 The created demo sketch sets GPIO pins 16 and 17 to be outputs (latch and pulse), and pin 18 to be an input (response). The ESP32 sends a pulse on the latch line, and in the middle of each pulse on the pulse line, checks if the value on the controller response line is low. If so, it knows that the controller has specified that that index has been selected. We know from our earlier analysis which buttons correspond to which indexes (minus the two weird buttons), so we can use this value to output onto the display which buttons have been pressed.
 
@@ -157,4 +157,4 @@ Note that this sprite had two components, the white foreground, and the black ou
 
 # Summary
 
-Overall, this device was pretty good. Despite not managing to dump the firmware, we managed to get hold of a similar firmware that has already been emulated, and customised the graphics of the rom using some well-known NES tools. We also reversed how the contoller works with a logic analyzer, and wrote an Arduino library for interfacing the provided NES-like controller with any Arduino sketch.
+Overall, this device was pretty good. Despite not managing to dump the firmware, we managed to get hold of a similar firmware that has already been emulated, and customised the graphics of the rom using some well-known NES tools. We also reversed how the controller works with a logic analyser, and wrote an Arduino library for interfacing the provided NES-like controller with any Arduino sketch.

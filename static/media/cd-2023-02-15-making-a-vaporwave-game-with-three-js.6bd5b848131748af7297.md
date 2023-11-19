@@ -29,7 +29,7 @@ Here is the design I came up with:
 
 ![models.png](/assets/images/making_a_vaporwave_game_with_three_js/models.png)
 
-As you can see, it's heavily inspired by the Toyota AE86 Trueno - an absolute classic. I felt it was very fitting to the environment, mainly because it looks very similar to a DeLorean. I added the engine-like models on the bottom as the car will be floating so it doesn't really make sense to have wheels!
+As you can see, it's heavily inspired by the Toyota AE86 Trueno. I felt it was very fitting to the environment, mainly because it looks very similar to a DeLorean. I added the engine-like models on the bottom as the car will be floating so it doesn't really make sense to have wheels!
 
 ![car_model.gif](/assets/images/making_a_vaporwave_game_with_three_js/car_model.gif)
 
@@ -117,7 +117,7 @@ The main components of the scenery are the sun with the orange-pink gradient, da
 
 ## Mountains
 
-The first task was to generate the heights used by the mesh that will act as the mountains. I decided to go with Perlin noise and proceduraly generate the floors throughout the game. This requires two panels that are contantly jumping to the end of the view in front of the player when they go out of the view behind the player - rendering a massive panel wouldn't go well!
+The first task was to generate the heights used by the mesh that will act as the mountains. I decided to go with Perlin noise and procedurally generate the floors throughout the game. This requires two panels that are constantly jumping to the end of the view in front of the player when they go out of the view behind the player - rendering a massive panel wouldn't go well!
 
 I used three.js **ImprovedNoise** to generate the heights, [this example](https://threejs.org/examples/webgl_geometry_terrain.html) was very useful for this. I also added some variables that would completely flatten the area in the middle of the mesh, and also make the height of the mountains peak in the middle of the two sides - this hides any dodgy edge lines and keeps everything looking smooth.
 
@@ -263,7 +263,7 @@ The fragment shader seen above calculates the mix value, which is the y coordina
 
 ## Buildings
 
-I still felt like the edges of the scenery were a bit empty, so I decided to add some buildings to the edges to fill up the space. These buildings are essentially cyclinders and cuboids with varying height/width, with a coloured top that is either light green or light blue. The function that initialises the buildings basically fills up the sides of the view with buildings until they are outside of the view of the player. As the car goes forward, the buildings that go out of view behind get shifted back in front of the player, much like the hills.
+I still felt like the edges of the scenery were a bit empty, so I decided to add some buildings to the edges to fill up the space. These buildings are essentially cylinders and cuboids with varying height/width, with a coloured top that is either light green or light blue. The function that initialises the buildings basically fills up the sides of the view with buildings until they are outside of the view of the player. As the car goes forward, the buildings that go out of view behind get shifted back in front of the player, much like the hills.
 
 I wanted the hills to be reflective, so I set the **emissive** property of the material - meaning it will reflect light with a specified colour. This means without light, it doesn't look very good! So lets sort that out in the next section.
 
@@ -612,14 +612,14 @@ scene.add(this.car_hitbox);
 I added three obstacle levels, all of the used models were created in Blender:
 
 - _Asteroid Field_ : This is the default level, and it consists of loads of asteroids that travel towards the player at the speed of the car (so fixed position in the world from player perspective).
-- _Solar System_ : This is a level that consists of a bunch of planets, each planet takes up four squares so the user must naviagate to one of the two safe squares every time there is a planet. I added bumpmaps to the planets to give them texture, but you can't really tell during gameplay!
+- _Solar System_ : This is a level that consists of a bunch of planets, each planet takes up four squares so the user must navigate to one of the two safe squares every time there is a planet. I added bumpmaps to the planets to give them texture, but you can't really tell during gameplay!
 - _Comet Trail_ : This is a level that basically takes the asteroid level and gives the asteroids a tail and a high velocity towards the player.
 
 The modes flip between the _asteroid field_ level, randomly either the _solar system_ or _comet trail_ levels - repeating throughout the game. Every time a non-default mode appears, the hyperdrive charges by 50%. I'll let you find out what the levels look like when you play the game!
 
 ## Collision
 
-We need to be able to work out if a collision has occured between an object and the car, if a collision is seen, the game should end. We already have the collision hitbox for the car, so we just need the object side of things to be sorted.
+We need to be able to work out if a collision has occurred between an object and the car, if a collision is seen, the game should end. We already have the collision hitbox for the car, so we just need the object side of things to be sorted.
 
 I added a function to the car class that takes an instance of the obstacles class, iterates over the current list of objects, and uses a [_Raycaster_](https://threejs.org/docs/index.html?q=RayC#api/en/core/Raycaster) object to detect collisions between the car hitbox and any of the objects:
 
@@ -719,6 +719,6 @@ Finally, I added a pause menu - allowing the player to pause the game with the _
 
 # Conclusion
 
-So thats the game completed! This was a fun project and I enjoyed learning all the fun intricacies of Javascript and three.js.
+So that's the game completed! This was a fun project and I enjoyed learning all the fun intricacies of Javascript and three.js.
 
 As this is a web-based game, [I can host it on this blog](https://luke-m.xyz/vaporracer) - have fun!

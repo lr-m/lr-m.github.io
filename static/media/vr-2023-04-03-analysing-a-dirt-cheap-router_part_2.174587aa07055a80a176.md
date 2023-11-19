@@ -21,7 +21,7 @@ header:
 
 # What is a buffer overflow?
 
-As most of the observed issues are buffer overflows, it would be a good idea to describe what they are and how they work. To put it into a single sentence, it is when a buffer is filled with more data than it can handle, therefore overflowing and writing adjascent contents on either the stack or the heap memory. Buffer overflows can cause crashes, and can also be leveraged to gain code execution on the device running the affected code.
+As most of the observed issues are buffer overflows, it would be a good idea to describe what they are and how they work. To put it into a single sentence, it is when a buffer is filled with more data than it can handle, therefore overflowing and writing adjacent contents on either the stack or the heap memory. Buffer overflows can cause crashes, and can also be leveraged to gain code execution on the device running the affected code.
 
 ![buffer-overflow-illustration.png](/assets/images/analysing_a_dirt_cheap_router_part_2/buffer-overflow-illustration.png)
 
@@ -31,7 +31,7 @@ In terms of stack overflows, these are pretty easy to exploit. If you overflow a
 
 # Finding Interesting Functions
 
-Most bugs in embedded system firmware written in C/C++ will be a result of using unsafe functions such as strcpy, sprintf, etc. Our binary doesn't have symbols, which means none of these fucnctions are identifiable - so we need to find them. 
+Most bugs in embedded system firmware written in C/C++ will be a result of using unsafe functions such as strcpy, sprintf, etc. Our binary doesn't have symbols, which means none of these functions are identifiable - so we need to find them. 
 
 In Ghidra, you can write scripts using the Ghidra scripting API, there are loads of scripts out there that can do some really interesting things. We would like a script that automatically identifies some functions that are of interest to us. 
 
@@ -168,7 +168,7 @@ So we've found a bug, but it is a terrible bug. It requires a full restart to tr
 
 ### *RT_ADD* Stack-based Buffer Overflow
 
-The next viable option for config value overflows is the *RT_ADD* HTTP command, the handler for this is located at address *0x8000ee88*. When this command is recieved (*CMD=RT_ADD* in HTTP payload), the value at config ID *0x5010201* (assuming it is named *RT_ADD*, but it is not named in the config) is loaded into a small 104 byte buffer on the top of the stack:
+The next viable option for config value overflows is the *RT_ADD* HTTP command, the handler for this is located at address *0x8000ee88*. When this command is received (*CMD=RT_ADD* in HTTP payload), the value at config ID *0x5010201* (assuming it is named *RT_ADD*, but it is not named in the config) is loaded into a small 104 byte buffer on the top of the stack:
 
 ```
 -c
@@ -300,7 +300,7 @@ However, on the next boot, the router notices the config is missing from the fla
 
 # Pre-auth HTTP Null Pointer Dereferences
 
-In the HTTP message handling, they do some processing on the incoming message to check for the presense of various *Host*/*User-Agent* names in the incoming packet headers:
+In the HTTP message handling, they do some processing on the incoming message to check for the presence of various *Host*/*User-Agent* names in the incoming packet headers:
 
 ```
 -c
@@ -352,7 +352,7 @@ char * strskip(char *input,char *target) {
 
 This function skips over a particular substring *target* within a larger string *input*, returning a pointer to the character immediately after the end of the *target* substring. If the *target* substring is not found within the input string, the function returns a null pointer.
 
-In the code snippet above that utilises *strskip*, it first finds the '*Mozilla*' string in the **User-Agent** header. If it is found, it then also checks for presense of '*Firefox*' - failing this, it also checks for '*QIHU*'. 
+In the code snippet above that utilises *strskip*, it first finds the '*Mozilla*' string in the **User-Agent** header. If it is found, it then also checks for presence of '*Firefox*' - failing this, it also checks for '*QIHU*'. 
 
 Earlier on, the *host* variable was allocated the address of the string following the **Host** HTTP parameter. E.g., if the header contained **Host: SomeHost**, *host* would point to **SomeHost**.
 
@@ -453,7 +453,7 @@ And here are the offsets of the data loaded into the registers:
 
 ## More Crashes
 
-It turns out that this buffer is used in multiple calls to *memcpy*, where the length is calculated using a version of *strpbrk*. The *strpbrk* function finds any occurences of characters in a string, returning the index of the character if one is found. 
+It turns out that this buffer is used in multiple calls to *memcpy*, where the length is calculated using a version of *strpbrk*. The *strpbrk* function finds any occurrences of characters in a string, returning the index of the character if one is found. 
 
 As it is used in this function, it takes the *ST* parameter and tries to see if any default UPnP strings are present, *urn:schemas-wifialliance-org:device:* for example. If one of these strings is found, it uses *strpbrk* to find the next ':' character, returning the index of the character if it is found. This index is then used as the number of bytes to copy from the *ST* parameter into the 132 byte stack buffer we saw earlier. 
 
@@ -469,11 +469,7 @@ Here is the code, I've colour coded the default values and their corresponding *
 
 ![upnp_bugs.png](/assets/images/analysing_a_dirt_cheap_router_part_2/upnp_bugs.png)
 
-# Honourable Mentions
-
-This section is dedicated to the bugs that I haven't been able to prove, but are interesting enough to mention.
-
-## NTP_SRV Stack-based Buffer Overflow
+# Honourable Mention - NTP_SRV Stack-based Buffer Overflow
 
 I haven't been able to test that this bug is useful/works, as I believe the router checks that it has an internet connection before it sends any NTP requests (which I do not want to provide it with!). I've been able to get it to call the **ntp_update** function, but never the actual function that sends the request and handles the response.
 
@@ -515,37 +511,6 @@ if (cVar8 != '\0') {
 This code uses null terminators to identify when the string has ended, and takes no consideration of how many '\*' have been seen. *Local_6cc* is a 192 byte buffer, and the number of observed '\*' symbols is multiplied by *0x40* to get the offset in the buffer the server address should be copied. 
 
 If a string such as **a*b*c*d*e*f*g*h*** is set to be the *SYS_NTPSRV* config value, then characters after **c** should be written outside of the allocated buffer on the stack. The length of each individual URL is also not checked, so in combination about 250 bytes of the config string would be useful in an exploit (which is far better than the other config bugs we discovered earlier).
-
-## Pre-auth Firmware Upgrade
-
-After staring at the HTTP handler for a while, I noticed a bunch of comments talking about a firmware upgrade, writing segments to flash, etc - all before the authentication ever takes place. I haven't been able to prove this, as I don't want to brick the router, and there doesn't seem to be any firmware downloads available anywhere which also complicates things slightly.
-
-If you send the following HTTP packet, **process_multipart_for_upgrade:boundary = NULL** is printed to the UART.
-
-```
--http
-POST / HTTP/1.1
-Content-Type: multipart/form-data
-
-CMD=SYS_UPG
-```
-
-The function that prints this output (*0x800068a0*) is clearly trying to parse something related to a firmware upgrade. After this function returns, execution jumps further down the HTTP handler to functions that seem to receive, check, and write the new firmware image to flash. All of this occurs before the authentication function is ever called! 
-
-```
--c
-iVar5 = strfind(content_type,"multipart/form-data");
-if ((iVar5 == 0) || (iVar4 = strfind(iVar4,"SYS_UPG"), iVar4 == 0))
-goto LAB_80011ee8; // More firmware stuff
-FUN_800068a0(socket); // Prints 'process_multipart_for_upgrade'
-iVar4 = lm_substring_find(socket,"CMD");
-if ((iVar4 == 0) || (iVar4 = strcmp(iVar4,"SYS_UPG"), iVar4 != 0)) {
-  ...
-  goto LAB_80011a98; // More firmware stuff
-}
-```
-
-In theory, this means if you are on the network, you can just flash the routers firmware without the admin password. Obviously I haven't been able to prove this, so I haven't included it in my final summary - if you're interested in reversing weird firmware file formats feel free to give it a shot! 
 
 # Bug Summary
 
