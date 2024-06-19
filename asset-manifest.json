@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.5fbdd800.css",
-    "main.js": "/static/js/main.f2416155.js",
+    "main.js": "/static/js/main.696ab6cf.js",
     "static/js/819.bf540993.chunk.js": "/static/js/819.bf540993.chunk.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
@@ -16,7 +16,7 @@
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
     "static/media/router-2023-08-25-p5.md": "/static/media/router-2023-08-25-p5.a0b70bfb075a5b8910c8.md",
     "static/media/camera-2023-09-20-p1.md": "/static/media/camera-2023-09-20-p1.41f0a3157273de3ef035.md",
-    "static/media/camera-2023-11-18-p2.md": "/static/media/camera-2023-11-18-p2.0326de7c188e74209a43.md",
+    "static/media/camera-2023-11-18-p2.md": "/static/media/camera-2023-11-18-p2.b13d30394815f6b96f4d.md",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.301882f72f2ce8c67829.md",
     "static/media/camera-2024-04-28-p8.md": "/static/media/camera-2024-04-28-p8.effac377bc6a79df3cb3.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
@@ -35,11 +35,11 @@
     "static/media/about-me.md": "/static/media/about-me.c21ce9a92b57c68bed8e.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.5fbdd800.css.map": "/static/css/main.5fbdd800.css.map",
-    "main.f2416155.js.map": "/static/js/main.f2416155.js.map",
+    "main.696ab6cf.js.map": "/static/js/main.696ab6cf.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5fbdd800.css",
-    "static/js/main.f2416155.js"
+    "static/js/main.696ab6cf.js"
   ]
 }
