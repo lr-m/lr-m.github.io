@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a5573bea.css",
-    "main.js": "/static/js/main.7cd9c418.js",
+    "main.css": "/static/css/main.f823c268.css",
+    "main.js": "/static/js/main.a5f8b119.js",
     "static/js/819.bf540993.chunk.js": "/static/js/819.bf540993.chunk.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/image.png": "/static/media/image.c6080b6e8c0d2a0f639c.png",
@@ -19,7 +19,7 @@
     "static/media/camera-2023-09-20-p1.md": "/static/media/camera-2023-09-20-p1.41f0a3157273de3ef035.md",
     "static/media/camera-2023-11-18-p2.md": "/static/media/camera-2023-11-18-p2.b13d30394815f6b96f4d.md",
     "static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/cd-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.301882f72f2ce8c67829.md",
-    "static/media/camera-2024-04-28-p8.md": "/static/media/camera-2024-04-28-p8.effac377bc6a79df3cb3.md",
+    "static/media/camera-2024-04-28-p8.md": "/static/media/camera-2024-04-28-p8.a877dc6ec7c7fbf23925.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
     "static/media/camera-2024-04-23-p5.md": "/static/media/camera-2024-04-23-p5.66cf3fc90db730fb09cb.md",
     "static/media/camera-2024-04-21-p3.md": "/static/media/camera-2024-04-21-p3.796dd4fd91313bd16d7f.md",
@@ -27,6 +27,7 @@
     "static/media/camera-2024-04-27-p7.md": "/static/media/camera-2024-04-27-p7.e840bc3fe9042c6cfb67.md",
     "static/media/travel_router-2024-07-07-p2.md": "/static/media/travel_router-2024-07-07-p2.25068d032dcca65d8984.md",
     "static/media/camera-2024-04-22-p4.md": "/static/media/camera-2024-04-22-p4.d29955e5c13703ee48a7.md",
+    "static/media/travel_router-2024-08-07-p4.md": "/static/media/travel_router-2024-08-07-p4.2354c7a7bc049081f303.md",
     "static/media/nas-2024-01-28-p1.md": "/static/media/nas-2024-01-28-p1.989b5aa16d5d0a08d668.md",
     "static/media/co-2022-10-30-cheap-games-console-teardown.md": "/static/media/co-2022-10-30-cheap-games-console-teardown.b2178c93d80c161b8071.md",
     "static/media/mail.png": "/static/media/mail.284d1cc1b59876a0e738.png",
@@ -38,12 +39,12 @@
     "index.html": "/index.html",
     "static/media/about-me.md": "/static/media/about-me.c21ce9a92b57c68bed8e.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
-    "main.a5573bea.css.map": "/static/css/main.a5573bea.css.map",
-    "main.7cd9c418.js.map": "/static/js/main.7cd9c418.js.map",
+    "main.f823c268.css.map": "/static/css/main.f823c268.css.map",
+    "main.a5f8b119.js.map": "/static/js/main.a5f8b119.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5573bea.css",
-    "static/js/main.7cd9c418.js"
+    "static/css/main.f823c268.css",
+    "static/js/main.a5f8b119.js"
   ]
 }
