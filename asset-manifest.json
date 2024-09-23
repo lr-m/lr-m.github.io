@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.f823c268.css",
-    "main.js": "/static/js/main.a5f8b119.js",
+    "main.css": "/static/css/main.9f9d815e.css",
+    "main.js": "/static/js/main.fb1c505d.js",
     "static/js/819.bf540993.chunk.js": "/static/js/819.bf540993.chunk.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
-    "static/media/image.png": "/static/media/image.c6080b6e8c0d2a0f639c.png",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
     "static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.md": "/static/media/cd-2023-02-15-making-a-vaporwave-game-with-three-js.6bd5b848131748af7297.md",
     "static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.md": "/static/media/cd-2023-03-04-replacing-lastpass-the-hard-way.2506ba04efa5a24b5d3c.md",
@@ -24,6 +23,8 @@
     "static/media/camera-2024-04-23-p5.md": "/static/media/camera-2024-04-23-p5.66cf3fc90db730fb09cb.md",
     "static/media/camera-2024-04-21-p3.md": "/static/media/camera-2024-04-21-p3.796dd4fd91313bd16d7f.md",
     "static/media/co-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/co-2023-08-02-modding-xbox-360-with-rgh.6d9acf6b7c53aa4a3d63.md",
+    "static/media/body_cam-2024-09-24-p3.md": "/static/media/body_cam-2024-09-24-p3.d1baad106e8dfb320437.md",
+    "static/media/body_cam-2024-09-25-p4.md": "/static/media/body_cam-2024-09-25-p4.8d0c4b246680a623032c.md",
     "static/media/camera-2024-04-27-p7.md": "/static/media/camera-2024-04-27-p7.e840bc3fe9042c6cfb67.md",
     "static/media/travel_router-2024-07-07-p2.md": "/static/media/travel_router-2024-07-07-p2.25068d032dcca65d8984.md",
     "static/media/camera-2024-04-22-p4.md": "/static/media/camera-2024-04-22-p4.d29955e5c13703ee48a7.md",
@@ -34,17 +35,19 @@
     "static/media/vr-2022-10-15-not-so-smart-lock.md": "/static/media/vr-2022-10-15-not-so-smart-lock.4fcdc07bb33bbe52e4b1.md",
     "static/media/email.png": "/static/media/email.0a784bab1e4c0415a758.png",
     "static/media/travel_router-2024-07-06-p1.md": "/static/media/travel_router-2024-07-06-p1.675b16481f8e3689ea53.md",
+    "static/media/body_cam-2024-09-23-p2.md": "/static/media/body_cam-2024-09-23-p2.8a085537783d0bbc7775.md",
+    "static/media/body_cam-2024-09-22-p1.md": "/static/media/body_cam-2024-09-22-p1.1af49f26d18184fe6616.md",
     "static/media/travel_router-2024-07-08-p3.md": "/static/media/travel_router-2024-07-08-p3.dd81cbdedc3128f54f96.md",
     "static/media/camera-2024-04-26-p6.md": "/static/media/camera-2024-04-26-p6.b075a3f9e5c1c5320dd0.md",
     "index.html": "/index.html",
     "static/media/about-me.md": "/static/media/about-me.c21ce9a92b57c68bed8e.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
-    "main.f823c268.css.map": "/static/css/main.f823c268.css.map",
-    "main.a5f8b119.js.map": "/static/js/main.a5f8b119.js.map",
+    "main.9f9d815e.css.map": "/static/css/main.9f9d815e.css.map",
+    "main.fb1c505d.js.map": "/static/js/main.fb1c505d.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f823c268.css",
-    "static/js/main.a5f8b119.js"
+    "static/css/main.9f9d815e.css",
+    "static/js/main.fb1c505d.js"
   ]
 }
