@@ -188,27 +188,30 @@ export default function Menu() {
 	 * Checks for a button press using the passed camera and raycaster, return 
 	 * pressed button if pressed, and false otherwise.
 	 */
-	this.checkForPress = function (overhead_camera, canvas, event) {	
-		this.mouse.x = (event.offsetX / canvas.width) * 2 - 1;
-		this.mouse.y = -(event.offsetY / canvas.height) * 2 + 1;
+	this.checkForPress = function(overhead_camera, canvas, event) {
+		// Get the actual rendered dimensions
+		const rect = canvas.getBoundingClientRect();
+		
+		// Use the rect dimensions for normalization
+		this.mouse.x = (event.offsetX / rect.width) * 2 - 1;
+		this.mouse.y = -(event.offsetY / rect.height) * 2 + 1;
 		
 		// Set the raycaster for button press detection
 		this.raycaster.setFromCamera(this.mouse, overhead_camera);
-
-		/* Check if the start button was pressed by finding intersections
-        with the raycast and checking the mesh name. */
+		
+		// Rest of your intersection checking code...
 		var intersects = this.raycaster.intersectObjects(this.buttons);
 		if (intersects.length > 0) {
 			for (let i = 0; i < intersects.length; i++) {
-				if (intersects[i].object.name == "Start"){
+				if (intersects[i].object.name == "Start") {
 					return "Start";
 				}
-
-				if (intersects[i].object.name == "Postprocessing")
+				if (intersects[i].object.name == "Postprocessing") {
 					return "Postprocessing";
-				
-				if (intersects[i].object.name == "Mute")
+				}
+				if (intersects[i].object.name == "Mute") {
 					return "Mute";
+				}
 			}
 		}
 		return false;

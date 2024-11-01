@@ -4,27 +4,28 @@
   <title>VaporRacer</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1" />
-
   <style>
     @font-face {
       font-family: digital_font;
-      src: url(./assets/VaporRacerAssets/Font/font.ttf);
+      src: url('./assets/VaporRacerAssets/Font/font.ttf');
     }
-
-    body {
+    
+    html, body {
       width: 100%;
       height: 100%;
       margin: 0;
+      padding: 0;
       overflow: hidden;
     }
-
+    
     #container {
       display: block;
-      width: 100vw;
+      width: 100vw; /* Fix: 100v to 100vw */
+      height: 100vh; /* Added height */
+      position: relative; /* Added for proper positioning */
     }
   </style>
 </head>
-
 <body>
   <div id="container"></div>
   <script type="module">
@@ -90,7 +91,7 @@
     var audio_enabled = true;
 
     // For mouse controls
-    var mouse_controls = false;
+    var mouse_controls = true;
     //var stats;
 
     // Object instances
@@ -105,15 +106,66 @@
     init();
     animate();
 
+    function handleMouseMove(event) {
+      if (event.touches) {
+          const touch = event.touches[0];
+          const rect = renderer.domElement.getBoundingClientRect();
+          const mouseEvent = {
+              // Use rect dimensions instead of canvas dimensions for normalization
+              offsetX: touch.clientX - rect.left,
+              offsetY: touch.clientY - rect.top,
+              // Store the rect dimensions for proper normalization
+              target: {
+                  clientWidth: rect.width,
+                  clientHeight: rect.height
+              }
+          };
+          onMouseMove(mouseEvent);
+      } else {
+          onMouseMove(event);
+      }
+  }
+
+    function handleMouseDown(event) {
+        // Create a synthetic mouse event for touch
+        if (event.touches) {
+            const touch = event.touches[0];
+            const mouseEvent = {
+                clientX: touch.clientX,
+                clientY: touch.clientY,
+                offsetX: touch.clientX - event.target.getBoundingClientRect().left,
+                offsetY: touch.clientY - event.target.getBoundingClientRect().top
+            };
+            console.log(mouseEvent);
+            handleInput(mouseEvent);
+        } else {
+            handleInput(event);
+        }
+    }
+
     /**
      * Initialises the game, populates global variables and initialises
      * everything that needs to be initialised for the game to run.
      */
     function init() {
-      // Add the event listeners
-      document.addEventListener("mousemove", onMouseMove, false);
-      document.addEventListener("mousedown", onMouseDown, false);
+      // Mouse events
+      document.addEventListener("mousemove", handleMouseMove, false);
+      document.addEventListener("mousedown", handleMouseDown, false);
+      
+      // Touch events
+      document.addEventListener("touchmove", handleMouseMove, { passive: false });
+      document.addEventListener("touchstart", handleMouseDown, { passive: false });
+      
+      // Prevent default touch behaviors (scrolling, zooming)
+      document.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+      
+      // Window resize
       window.addEventListener("resize", onWindowResize);
+      
+      // Optional: Add touch end event if needed
+      document.addEventListener("touchend", (e) => {
+          e.preventDefault();
+      }, { passive: false });
 
       // Initialise scene
       scene = new THREE.Scene();
@@ -327,81 +379,81 @@
     }
 
     /**
-     * The function called every time there is a mouse movement, used
-     * to move the car when the player has activated mouse controls.
+     * Handles both mouse and touch movement to control the car
      */
     function onMouseMove(event) {
-      const canvas = renderer.domElement;
-      menu.updateMouse(canvas, event);
+        const canvas = renderer.domElement;
+        const rect = canvas.getBoundingClientRect();
+        
+        // Normalize coordinates using getBoundingClientRect dimensions
+        const x = (event.offsetX / rect.width) * 2 - 1;
+        const y = -(event.offsetY / rect.height) * 2 + 1;
 
-      if (
-        !game_over &&
-        !menu.isPaused() &&
-        !hyperdrive.isActive() &&
-        mouse_controls
-      ) {
-        var x = (event.offsetX / canvas.width) * 2 - 1;
-        var y = -(event.offsetY / canvas.height) * 2 + 1;
+        // Update menu mouse position using the same normalization
+        menu.updateMouse(canvas, {
+            offsetX: event.offsetX,
+            offsetY: event.offsetY
+        });
 
-        var col = Math.floor(3 * (x / 2 + 0.5));
-        var row = Math.floor(2 * (y / 2 + 0.5));
+        if (!game_over && !menu.isPaused() && !hyperdrive.isActive() && mouse_controls) {
+            // Calculate grid position (0-2 for columns, 0-1 for rows)
+            const col = Math.floor(3 * (x / 2 + 0.5));
+            const row = Math.floor(2 * (y / 2 + 0.5));
+            
+            const position = car.getPosition();
 
-        var position = car.getPosition();
+            // Handle horizontal movement
+            if (!car.isChangingLane()) {
+                if (position[0] < col && car.moveRight()) {
+                    hor_change.play();
+                } else if (position[0] > col && car.moveLeft()) {
+                    hor_change.play();
+                }
+            }
 
-        if (!car.isChangingLane()) {
-          if (position[0] < col && car.moveRight()) {
-            hor_change.play();
-          } else if (position[0] > col && car.moveLeft()) {
-            hor_change.play();
-          }
+            // Handle lane change transitions
+            if (car.isChangingLane()) {
+                if (col == 2 && position[0] == 1) {
+                    car.moveRight();
+                } else if (col == 0 && position[0] == 1) {
+                    car.moveLeft();
+                }
+            }
+
+            // Handle vertical movement
+            if (!car.isChangingHeight()) {
+                if (position[1] > row && car.moveDown()) {
+                    ver_change.play();
+                    if (car_front_camera) current_camera_y += car.getHeightSep();
+                }
+                if (position[1] < row && car.moveUp()) {
+                    ver_change.play();
+                    if (car_front_camera) current_camera_y += car.getHeightSep();
+                }
+            }
         }
-
-        if (car.isChangingLane()) {
-          if (col == 2 && position[0] == 1) {
-            car.moveRight();
-          } else if (col == 0 && position[0] == 1) {
-            car.moveLeft();
-          }
-        }
-
-        if (!car.isChangingHeight()) {
-          if (position[1] > row && car.moveDown()) {
-            ver_change.play();
-            if (car_front_camera) current_camera_y += car.getHeightSep();
-          }
-
-          if (position[1] < row && car.moveUp()) {
-            ver_change.play();
-            if (car_front_camera) current_camera_y += car.getHeightSep();
-          }
-        }
-      }
     }
 
     /**
      * This is the function called every time there is a mouse press.
      */
-    function onMouseDown(event) {
+    function handleInput(event) {
       const canvas = renderer.domElement;
       var pressed = menu.checkForPress(camera, canvas, event);
-
+      
       if (pressed == "Postprocessing") {
-        togglePostProcessing();
+          togglePostProcessing();
       } else if (pressed == "Mute") {
-        toggleAudio();
+          toggleAudio();
       } else if (pressed == "Start" && !menu.isPaused()) {
-        bg_music.play();
-
-        menu.setActive(false);
-
-        last_time = Math.round(new Date().getTime() / 1000);
-
-        hyperdrive.clearCharge();
-
-        // If the game was over, restart it
-        if (game_over) reset();
+          bg_music.play();
+          menu.setActive(false);
+          last_time = Math.round(new Date().getTime() / 1000);
+          hyperdrive.clearCharge();
+          // If the game was over, restart it
+          if (game_over) reset();
       }
-    }
+  }
 
     /**
      * Function that is called every time the size of the window changes.
@@ -706,62 +758,50 @@
       const crtShader = {
         uniforms: {
           tDiffuse: { value: null },
+          curvature: { value: new THREE.Vector2(0.2, 0.4) },
+          scanLineDensity: { value: 500.0 }
         },
         vertexShader: `
-            varying vec2 vUv;
-
-            void main() {
-                vUv = uv;
-                gl_Position = projectionMatrix * 
-									modelViewMatrix * vec4(position, 1);
-            }
-            `,
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
         fragmentShader: `
-            #define SCAN_LINE_DENSITY 500.0
+          varying vec2 vUv;
+          uniform sampler2D tDiffuse;
+          uniform vec2 curvature;
+          uniform float scanLineDensity;
 
-            varying vec2 vUv; // From vertex shader
-
-            uniform sampler2D tDiffuse;
-
-            void main() {
-                // Curve amounts for x and y
-                vec2 curve = vec2(0.2, 0.4); 
-
-                // Distances from the center
-                vec2 distances = vec2(abs(0.5 - vUv.x), 
-                    abs(0.5 - vUv.y));
-
-                // Square the distances to smooth the edges
-                distances *= distances;
-
-                // Modifiable vUv
-                vec2 vUv_copy = vec2(vUv.x, vUv.y);
-
-                // Apply the curvature
-                vUv_copy.x -= 0.5;
-                vUv_copy.x *= 1.0 + (distances.y * curve.x);
-                vUv_copy.x += 0.5;
-
-                vUv_copy.y -= 0.5;
-                vUv_copy.y *= 1.0 + (distances.x * curve.y);
-                vUv_copy.y += 0.5;
-
-                // Get texture pixel
-                vec4 tex_pixel = texture2D(tDiffuse, 
-                    vec2(vUv_copy.x, vUv_copy.y));
-
-                // Add scanline
-                tex_pixel.rgb += 0.05 * sin(vUv_copy.y * SCAN_LINE_DENSITY);
-
-                /* Cut off the corners by setting corners to black 
-                if not in range */
-                if(vUv_copy.x > 1.0 || vUv_copy.y > 1.0 || 
-                  vUv_copy.x < 0.0 || vUv_copy.y < 0.0)
-                    tex_pixel = vec4(0, 0, 0, 1);
-
-                gl_FragColor = tex_pixel;
-              }
-              `,
+          void main() {
+            // Calculate center offset once
+            vec2 centerOffset = vUv - 0.5;
+            
+            // Calculate squared distances from center more efficiently
+            vec2 distances = centerOffset * centerOffset;
+            
+            // Apply curvature distortion
+            vec2 curvedUv = centerOffset * (1.0 + vec2(
+              distances.y * curvature.x,
+              distances.x * curvature.y
+            )) + 0.5;
+            
+            // Early discard for pixels outside valid range
+            if(any(greaterThan(curvedUv, vec2(1.0))) || any(lessThan(curvedUv, vec2(0.0)))) {
+              gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+              return;
+            }
+            
+            // Sample texture once
+            vec4 texColor = texture2D(tDiffuse, curvedUv);
+            
+            // Add scanline effect
+            texColor.rgb += 0.05 * sin(curvedUv.y * scanLineDensity);
+            
+            gl_FragColor = texColor;
+          }
+        `
       };
 
       crtPass = new ShaderPass(crtShader);

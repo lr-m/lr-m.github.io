@@ -9,31 +9,63 @@ export default function Dash() {
 
   this.last_hyper = 0;
 
-  this.initialiseText = function (scene, container) {
-    var top_offset = (container.parentElement.offsetTop + container.parentElement.offsetHeight) - 80;
-
-    // Initialise score text
+  this.initialiseText = function(scene, container) {
+    // Calculate viewport-relative positions
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    
+    // Common styles function to avoid repetition
+    const applyCommonStyles = (element) => {
+      element.style.position = "absolute";
+      // Smaller font size on mobile (below 768px)
+      if (vw < 768) {
+        element.style.fontSize = "clamp(1rem, 2.5vw, 1.5rem)";
+      } else {
+        element.style.fontSize = "clamp(1.5rem, 4vw, 2.5rem)";
+      }
+      element.style.fontFamily = "digital_font";
+      element.style.color = "white";
+      element.style.top = "min(60px, 8vh)"; // Reduced top position for mobile
+    };
+  
+    // Initialize score text
     this.score_text = document.createElement("div");
-    this.score_text.style.position = "absolute";
-    this.score_text.style.fontSize = 2.5 + "em";
-    this.score_text.style.fontFamily = "digital_font";
-    this.score_text.style.top = 100 + "px";
-    this.score_text.style.right = (container.parentElement.offsetLeft + 100) + "px";
-    this.score_text.style.color = "white";
-
-    // Initialise status text
+    applyCommonStyles(this.score_text);
+    this.score_text.style.right = vw < 768 ? "max(3vw, 10px)" : "max(5vw, 20px)"; // Smaller margin on mobile
+    
+    // Initialize status text
     this.status_text = document.createElement("div");
-    this.status_text.style.position = "absolute";
-    this.status_text.style.fontSize = 2.5 + "em";
-    this.status_text.style.fontFamily = "digital_font";
-    this.status_text.style.top = 100 + "px";
-    this.status_text.style.left = (container.parentElement.offsetLeft + 100) + "px";
-    this.status_text.style.color = "white";
-
+    applyCommonStyles(this.status_text);
+    this.status_text.style.left = vw < 768 ? "max(3vw, 10px)" : "max(5vw, 20px)"; // Smaller margin on mobile
+  
+    // Add resize handler for responsive updates
+    const updatePositions = () => {
+      const newVw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const newVh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      
+      // Update positions and sizes based on new viewport size
+      const isMobile = newVw < 768;
+      
+      // Update font size based on screen size
+      [this.score_text, this.status_text].forEach(element => {
+        element.style.fontSize = isMobile 
+          ? "clamp(1rem, 2.5vw, 1.5rem)"
+          : "clamp(1.5rem, 4vw, 2.5rem)";
+        element.style.top = `min(${isMobile ? '60px' : '100px'}, ${newVh * (isMobile ? 0.08 : 0.15)}px)`;
+      });
+  
+      // Update margins
+      this.score_text.style.right = isMobile ? "max(3vw, 10px)" : "max(5vw, 20px)";
+      this.status_text.style.left = isMobile ? "max(3vw, 10px)" : "max(5vw, 20px)";
+    };
+  
+    // Add event listener for resize
+    window.addEventListener('resize', updatePositions);
+    
     // Add to page
     document.body.appendChild(this.score_text);
     document.body.appendChild(this.status_text);
-  }
+  };
 
   /**
    * Resets the position of the HTML text on screen so that is matches
