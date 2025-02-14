@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[819],{1819:(e,p,a)=>{e.exports=a.p+"static/media/about-me.c21ce9a92b57c68bed8e.md"}}]);

@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.d0433cf9.css",
-    "main.js": "/static/js/main.d6a07c9f.js",
-    "static/js/819.bf540993.chunk.js": "/static/js/819.bf540993.chunk.js",
+    "main.css": "/static/css/main.6d75ba07.css",
+    "main.js": "/static/js/main.e65a4c0c.js",
+    "static/js/819.50ed4cc1.chunk.js": "/static/js/819.50ed4cc1.chunk.js",
     "static/js/453.68693753.chunk.js": "/static/js/453.68693753.chunk.js",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
+    "static/media/video_call_camera-2025-01-19-p5.md": "/static/media/video_call_camera-2025-01-19-p5.b45ef8b4a9625adfd692.md",
+    "static/media/video_call_camera-2025-02-04-p6.md": "/static/media/video_call_camera-2025-02-04-p6.d2fcf5d9fd2a91ed8bd2.md",
+    "static/media/video_call_camera-2025-01-18-p4.md": "/static/media/video_call_camera-2025-01-18-p4.5cf97091db56e6defda9.md",
     "static/media/other-2023-02-15-making-a-vaporwave-game-with-three-js.md": "/static/media/other-2023-02-15-making-a-vaporwave-game-with-three-js.3ae1bd62867e5fb94557.md",
     "static/media/router-2023-04-21-p3.md": "/static/media/router-2023-04-21-p3.5cf0d42a04e9bb1d2579.md",
     "static/media/other-2023-03-04-replacing-lastpass-the-hard-way.md": "/static/media/other-2023-03-04-replacing-lastpass-the-hard-way.2ef7ff15687958b1ae1a.md",
     "static/media/router-2023-06-03-p4.md": "/static/media/router-2023-06-03-p4.335bdee5b5203f91fec7.md",
+    "static/media/video_call_camera-2024-12-30-p2.md": "/static/media/video_call_camera-2024-12-30-p2.89ab48713c54dde0957a.md",
     "static/media/router-2023-04-03-p2.md": "/static/media/router-2023-04-03-p2.1cca2c8235a5d68dd21c.md",
     "static/media/github.png": "/static/media/github.0937c07b6bd353d2f4ce.png",
     "static/media/other-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.md": "/static/media/other-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.4104710423833357feb0.md",
@@ -21,6 +25,7 @@
     "static/media/camera-2024-04-28-p8.md": "/static/media/camera-2024-04-28-p8.67b88296844fe2ed678b.md",
     "static/media/other-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/other-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.13541d596be5975b1af7.md",
     "static/media/linkedin.png": "/static/media/linkedin.dee31da8e306dbdc1aba.png",
+    "static/media/video_call_camera-2024-12-31-p3.md": "/static/media/video_call_camera-2024-12-31-p3.fca6eabd0fe8af71bca3.md",
     "static/media/camera-2024-04-23-p5.md": "/static/media/camera-2024-04-23-p5.a1ec534a29083f5dd61f.md",
     "static/media/camera-2024-04-21-p3.md": "/static/media/camera-2024-04-21-p3.2c8bc675f9e923f3c089.md",
     "static/media/other-2023-08-02-modding-xbox-360-with-rgh.md": "/static/media/other-2023-08-02-modding-xbox-360-with-rgh.db42db4c7c3bc02037cd.md",
@@ -37,18 +42,19 @@
     "static/media/email.png": "/static/media/email.0a784bab1e4c0415a758.png",
     "static/media/travel_router-2024-07-06-p1.md": "/static/media/travel_router-2024-07-06-p1.a70990fb029888208f1d.md",
     "static/media/body_cam-2024-09-23-p2.md": "/static/media/body_cam-2024-09-23-p2.c2811643bfe68375843f.md",
+    "static/media/video_call_camera-2024-12-29-p1.md": "/static/media/video_call_camera-2024-12-29-p1.e78f528eb7391f2f4213.md",
     "static/media/travel_router-2024-07-08-p3.md": "/static/media/travel_router-2024-07-08-p3.53574a25b0917533f70a.md",
     "static/media/body_cam-2024-09-22-p1.md": "/static/media/body_cam-2024-09-22-p1.89dc8dca7a3d0aed75fa.md",
     "static/media/camera-2024-04-26-p6.md": "/static/media/camera-2024-04-26-p6.96e7bd340cbee0fd047c.md",
+    "static/media/about-me.md": "/static/media/about-me.569f80ee7492f44d6fff.md",
     "index.html": "/index.html",
-    "static/media/about-me.md": "/static/media/about-me.c21ce9a92b57c68bed8e.md",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
-    "main.d0433cf9.css.map": "/static/css/main.d0433cf9.css.map",
-    "main.d6a07c9f.js.map": "/static/js/main.d6a07c9f.js.map",
+    "main.6d75ba07.css.map": "/static/css/main.6d75ba07.css.map",
+    "main.e65a4c0c.js.map": "/static/js/main.e65a4c0c.js.map",
     "453.68693753.chunk.js.map": "/static/js/453.68693753.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0433cf9.css",
-    "static/js/main.d6a07c9f.js"
+    "static/css/main.6d75ba07.css",
+    "static/js/main.e65a4c0c.js"
   ]
 }
