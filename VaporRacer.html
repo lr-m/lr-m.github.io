@@ -9,23 +9,28 @@
       font-family: digital_font;
       src: url('./assets/VaporRacerAssets/Font/font.ttf');
     }
-    
-    html, body {
+
+    html,
+    body {
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
       overflow: hidden;
     }
-    
+
     #container {
       display: block;
-      width: 100vw; /* Fix: 100v to 100vw */
-      height: 100vh; /* Added height */
-      position: relative; /* Added for proper positioning */
+      width: 100vw;
+      /* Fix: 100v to 100vw */
+      height: 100vh;
+      /* Added height */
+      position: relative;
+      /* Added for proper positioning */
     }
   </style>
 </head>
+
 <body>
   <div id="container"></div>
   <script type="module">
@@ -91,7 +96,7 @@
     var audio_enabled = true;
 
     // For mouse controls
-    var mouse_controls = true;
+    var mouse_controls = isTouchDevice();
     //var stats;
 
     // Object instances
@@ -106,41 +111,52 @@
     init();
     animate();
 
+    /**
+     * Detects if the device is primarily a touch device
+     */
+    function isTouchDevice() {
+      return (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      );
+    }
+
     function handleMouseMove(event) {
       if (event.touches) {
-          const touch = event.touches[0];
-          const rect = renderer.domElement.getBoundingClientRect();
-          const mouseEvent = {
-              // Use rect dimensions instead of canvas dimensions for normalization
-              offsetX: touch.clientX - rect.left,
-              offsetY: touch.clientY - rect.top,
-              // Store the rect dimensions for proper normalization
-              target: {
-                  clientWidth: rect.width,
-                  clientHeight: rect.height
-              }
-          };
-          onMouseMove(mouseEvent);
+        const touch = event.touches[0];
+        const rect = renderer.domElement.getBoundingClientRect();
+        const mouseEvent = {
+          // Use rect dimensions instead of canvas dimensions for normalization
+          offsetX: touch.clientX - rect.left,
+          offsetY: touch.clientY - rect.top,
+          // Store the rect dimensions for proper normalization
+          target: {
+            clientWidth: rect.width,
+            clientHeight: rect.height
+          }
+        };
+        onMouseMove(mouseEvent);
       } else {
-          onMouseMove(event);
+        onMouseMove(event);
       }
-  }
+    }
 
     function handleMouseDown(event) {
-        // Create a synthetic mouse event for touch
-        if (event.touches) {
-            const touch = event.touches[0];
-            const mouseEvent = {
-                clientX: touch.clientX,
-                clientY: touch.clientY,
-                offsetX: touch.clientX - event.target.getBoundingClientRect().left,
-                offsetY: touch.clientY - event.target.getBoundingClientRect().top
-            };
-            console.log(mouseEvent);
-            handleInput(mouseEvent);
-        } else {
-            handleInput(event);
-        }
+      // Create a synthetic mouse event for touch
+      if (event.touches) {
+        const touch = event.touches[0];
+        const mouseEvent = {
+          clientX: touch.clientX,
+          clientY: touch.clientY,
+          offsetX: touch.clientX - event.target.getBoundingClientRect().left,
+          offsetY: touch.clientY - event.target.getBoundingClientRect().top
+        };
+        console.log(mouseEvent);
+        handleInput(mouseEvent);
+      } else {
+        handleInput(event);
+      }
     }
 
     /**
@@ -151,20 +167,20 @@
       // Mouse events
       document.addEventListener("mousemove", handleMouseMove, false);
       document.addEventListener("mousedown", handleMouseDown, false);
-      
+
       // Touch events
       document.addEventListener("touchmove", handleMouseMove, { passive: false });
       document.addEventListener("touchstart", handleMouseDown, { passive: false });
-      
+
       // Prevent default touch behaviors (scrolling, zooming)
       document.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
-      
+
       // Window resize
       window.addEventListener("resize", onWindowResize);
-      
+
       // Optional: Add touch end event if needed
       document.addEventListener("touchend", (e) => {
-          e.preventDefault();
+        e.preventDefault();
       }, { passive: false });
 
       // Initialise scene
@@ -382,56 +398,56 @@
      * Handles both mouse and touch movement to control the car
      */
     function onMouseMove(event) {
-        const canvas = renderer.domElement;
-        const rect = canvas.getBoundingClientRect();
-        
-        // Normalize coordinates using getBoundingClientRect dimensions
-        const x = (event.offsetX / rect.width) * 2 - 1;
-        const y = -(event.offsetY / rect.height) * 2 + 1;
+      const canvas = renderer.domElement;
+      const rect = canvas.getBoundingClientRect();
 
-        // Update menu mouse position using the same normalization
-        menu.updateMouse(canvas, {
-            offsetX: event.offsetX,
-            offsetY: event.offsetY
-        });
+      // Normalize coordinates using getBoundingClientRect dimensions
+      const x = (event.offsetX / rect.width) * 2 - 1;
+      const y = -(event.offsetY / rect.height) * 2 + 1;
 
-        if (!game_over && !menu.isPaused() && !hyperdrive.isActive() && mouse_controls) {
-            // Calculate grid position (0-2 for columns, 0-1 for rows)
-            const col = Math.floor(3 * (x / 2 + 0.5));
-            const row = Math.floor(2 * (y / 2 + 0.5));
-            
-            const position = car.getPosition();
+      // Update menu mouse position using the same normalization
+      menu.updateMouse(canvas, {
+        offsetX: event.offsetX,
+        offsetY: event.offsetY
+      });
 
-            // Handle horizontal movement
-            if (!car.isChangingLane()) {
-                if (position[0] < col && car.moveRight()) {
-                    hor_change.play();
-                } else if (position[0] > col && car.moveLeft()) {
-                    hor_change.play();
-                }
-            }
+      if (!game_over && !menu.isPaused() && !hyperdrive.isActive() && mouse_controls) {
+        // Calculate grid position (0-2 for columns, 0-1 for rows)
+        const col = Math.floor(3 * (x / 2 + 0.5));
+        const row = Math.floor(2 * (y / 2 + 0.5));
 
-            // Handle lane change transitions
-            if (car.isChangingLane()) {
-                if (col == 2 && position[0] == 1) {
-                    car.moveRight();
-                } else if (col == 0 && position[0] == 1) {
-                    car.moveLeft();
-                }
-            }
+        const position = car.getPosition();
 
-            // Handle vertical movement
-            if (!car.isChangingHeight()) {
-                if (position[1] > row && car.moveDown()) {
-                    ver_change.play();
-                    if (car_front_camera) current_camera_y += car.getHeightSep();
-                }
-                if (position[1] < row && car.moveUp()) {
-                    ver_change.play();
-                    if (car_front_camera) current_camera_y += car.getHeightSep();
-                }
-            }
+        // Handle horizontal movement
+        if (!car.isChangingLane()) {
+          if (position[0] < col && car.moveRight()) {
+            hor_change.play();
+          } else if (position[0] > col && car.moveLeft()) {
+            hor_change.play();
+          }
         }
+
+        // Handle lane change transitions
+        if (car.isChangingLane()) {
+          if (col == 2 && position[0] == 1) {
+            car.moveRight();
+          } else if (col == 0 && position[0] == 1) {
+            car.moveLeft();
+          }
+        }
+
+        // Handle vertical movement
+        if (!car.isChangingHeight()) {
+          if (position[1] > row && car.moveDown()) {
+            ver_change.play();
+            if (car_front_camera) current_camera_y += car.getHeightSep();
+          }
+          if (position[1] < row && car.moveUp()) {
+            ver_change.play();
+            if (car_front_camera) current_camera_y += car.getHeightSep();
+          }
+        }
+      }
     }
 
     /**
@@ -440,20 +456,20 @@
     function handleInput(event) {
       const canvas = renderer.domElement;
       var pressed = menu.checkForPress(camera, canvas, event);
-      
+
       if (pressed == "Postprocessing") {
-          togglePostProcessing();
+        togglePostProcessing();
       } else if (pressed == "Mute") {
-          toggleAudio();
+        toggleAudio();
       } else if (pressed == "Start" && !menu.isPaused()) {
-          bg_music.play();
-          menu.setActive(false);
-          last_time = Math.round(new Date().getTime() / 1000);
-          hyperdrive.clearCharge();
-          // If the game was over, restart it
-          if (game_over) reset();
+        bg_music.play();
+        menu.setActive(false);
+        last_time = Math.round(new Date().getTime() / 1000);
+        hyperdrive.clearCharge();
+        // If the game was over, restart it
+        if (game_over) reset();
       }
-  }
+    }
 
     /**
      * Function that is called every time the size of the window changes.
