@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.0e4945bf.css",
-    "main.js": "/static/js/main.749ea58a.js",
-    "static/js/819.6bb99f1d.chunk.js": "/static/js/819.6bb99f1d.chunk.js",
+    "main.js": "/static/js/main.d5b1667e.js",
+    "static/js/819.98d54239.chunk.js": "/static/js/819.98d54239.chunk.js",
     "static/js/453.c3db55c9.chunk.js": "/static/js/453.c3db55c9.chunk.js",
     "static/media/x.png": "/static/media/x.f750615696ca49952d51.png",
     "static/media/video_call_camera-2025-03-16-p7.md": "/static/media/video_call_camera-2025-03-16-p7.106883b19381e9f231bf.md",
     "static/media/contm.ttf": "/static/media/contm.76ee5a8401a0bbe0de9c.ttf",
     "static/media/video_call_camera-2025-01-19-p5.md": "/static/media/video_call_camera-2025-01-19-p5.7bf765f1cccefc644acd.md",
+    "static/media/tenda_cam-2025-08-24-p2.md": "/static/media/tenda_cam-2025-08-24-p2.a7b91e78b8c918b004bb.md",
     "static/media/video_call_camera-2025-01-18-p4.md": "/static/media/video_call_camera-2025-01-18-p4.ff47826882ebd5b0a5e5.md",
     "static/media/other-2023-02-15-making-a-vaporwave-game-with-three-js.md": "/static/media/other-2023-02-15-making-a-vaporwave-game-with-three-js.8234977f8826d1da9246.md",
     "static/media/translator-2025-04-01-p2.md": "/static/media/translator-2025-04-01-p2.08c5935df40c65c33507.md",
@@ -47,22 +48,24 @@
     "static/media/mail.png": "/static/media/mail.284d1cc1b59876a0e738.png",
     "static/media/email.png": "/static/media/email.0a784bab1e4c0415a758.png",
     "static/media/other-2022-10-15-not-so-smart-lock.md": "/static/media/other-2022-10-15-not-so-smart-lock.0b4aeb051ddc725998c9.md",
+    "static/media/tenda_cam-2025-08-23-p1.md": "/static/media/tenda_cam-2025-08-23-p1.d5b4a0c79c7726788167.md",
     "static/media/travel_router-2024-07-06-p1.md": "/static/media/travel_router-2024-07-06-p1.b88c1af75fe1bf5c0fc0.md",
     "static/media/body_cam-2024-09-23-p2.md": "/static/media/body_cam-2024-09-23-p2.4c459b110bcdf0811459.md",
     "static/media/video_call_camera-2024-12-29-p1.md": "/static/media/video_call_camera-2024-12-29-p1.a8f29c3c50550169e5e1.md",
     "static/media/travel_router-2024-07-08-p3.md": "/static/media/travel_router-2024-07-08-p3.d814bb4d9802a9e90b5d.md",
     "static/media/body_cam-2024-09-22-p1.md": "/static/media/body_cam-2024-09-22-p1.7c5b6e5b279c16476f0c.md",
     "static/media/camera-2024-04-26-p6.md": "/static/media/camera-2024-04-26-p6.1bb32abd2bb7e1292c9a.md",
+    "static/media/tenda_cam-2025-08-25-p3.md": "/static/media/tenda_cam-2025-08-25-p3.808f9037d5aff38a42e9.md",
     "static/media/translator-2025-03-31-p1.md": "/static/media/translator-2025-03-31-p1.9a39c1ce967ad8c5b8e5.md",
-    "static/media/about-me.md": "/static/media/about-me.75ef685c8e71a9ebb049.md",
+    "static/media/about-me.md": "/static/media/about-me.82532d0574ff39706006.md",
     "index.html": "/index.html",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.0e4945bf.css.map": "/static/css/main.0e4945bf.css.map",
-    "main.749ea58a.js.map": "/static/js/main.749ea58a.js.map",
+    "main.d5b1667e.js.map": "/static/js/main.d5b1667e.js.map",
     "453.c3db55c9.chunk.js.map": "/static/js/453.c3db55c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0e4945bf.css",
-    "static/js/main.749ea58a.js"
+    "static/js/main.d5b1667e.js"
   ]
 }

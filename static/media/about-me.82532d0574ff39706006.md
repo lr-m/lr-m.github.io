@@ -33,4 +33,14 @@ Recently, I've been contributing single-page articles about my projects to the [
       <a href="https://pagedout.institute/download/PagedOut_007.pdf#page=58"><li><em>(Un)safe and Sound: Rooting a Camera with a Noise</em></li></a>
     </ul>
   </div>
+
+  <a href="https://pagedout.institute/download/PagedOut_008.pdf">
+    <img src="/assets/images/po_covers/issue_8.png" alt="PagedOut Issue 7" style="width: 150px; height: auto; cursor: pointer;">
+  </a>
+  <div>
+    <a href="https://pagedout.institute/download/PagedOut_008.pdf" style="color: #00c3ffff;">Issue 8:</a>
+    <ul style="margin: 0.5rem 0;">
+      <a href="https://pagedout.institute/webview.php?issue=8&page=82&article=Killing+Canaries+for+Kirby%3A+Hacking+an+IoT+Camera+to+Play+NES+Games"><li><em>Killing Canaries for Kirby: Hacking an IoT Camera to Play NES Games</em></li></a>
+    </ul>
+  </div>
 </div>
