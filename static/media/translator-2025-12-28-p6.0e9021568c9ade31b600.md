@@ -1,6 +1,6 @@
 ---
 published: true
-title: "🗺️ [5] Three More Exploits"
+title: "🗺️ [5] Four More Frels Exploits"
 toc: true
 toc_sticky: true
 tagline: "I know I said I was done with this in the last blog, but I decided to do a talk on this for some reason... which means more exploits!"
@@ -124,6 +124,15 @@ Here are the details of the device:
 This is pretty much identical to the previous Doogee X5 exploit, just with a rewritten JOP-chain that doesn't use the **memcpy** workaround. This one also seems rock-solid when it comes to reliability.
 
 ![p8_lite.gif](/assets/images/translator/p6/p8_lite.gif)
+
+# Huawei MediaPad T3 7
+
+This is basically the P8 Lite firmware method combined with the Doogee X5 Lite exploit.
+
+## Exploit
+
+![frels_huawei_t3_7.gif](/assets/images/translator/p6/frels_huawei_t3_7.gif)
+
 
 # Blackview A60
 
