@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9cbc08eb.css",
-    "main.js": "/static/js/main.8ee7eeeb.js",
+    "main.js": "/static/js/main.194cfdf3.js",
     "static/js/819.b71b01fb.chunk.js": "/static/js/819.b71b01fb.chunk.js",
     "static/js/453.c3db55c9.chunk.js": "/static/js/453.c3db55c9.chunk.js",
     "static/media/x.png": "/static/media/x.f750615696ca49952d51.png",
@@ -20,6 +20,7 @@
     "static/media/router-2023-04-03-p2.md": "/static/media/router-2023-04-03-p2.aebe6fef2ac7557b261e.md",
     "static/media/github.png": "/static/media/github.0937c07b6bd353d2f4ce.png",
     "static/media/other-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.md": "/static/media/other-2023-10-31-using_llms_for_reverse_engineering_ghidrollama.57e7eceefcf63572a6af.md",
+    "static/media/other-2026-03-25-camera-glasses-firmware-patching.md": "/static/media/other-2026-03-25-camera-glasses-firmware-patching.9f5357a76417e13273c8.md",
     "static/media/custom_font.ttf": "/static/media/custom_font.db42315450de88c14b9c.ttf",
     "static/media/router-2022-12-22-p1.md": "/static/media/router-2022-12-22-p1.316abc800d84ea11a0cd.md",
     "static/media/router-2023-08-25-p5.md": "/static/media/router-2023-08-25-p5.9c850f58340f0f98af07.md",
@@ -30,7 +31,6 @@
     "static/media/video_call_camera-2025-03-21-p8.md": "/static/media/video_call_camera-2025-03-21-p8.64eea0b9656db538d9ff.md",
     "static/media/camera-2023-11-18-p2.md": "/static/media/camera-2023-11-18-p2.30a29090a881e9a9af6d.md",
     "static/media/camera-2024-04-28-p8.md": "/static/media/camera-2024-04-28-p8.6477af6690148e685f72.md",
-    "static/media/other-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.md": "/static/media/other-2023-01-31-a-hands-on-guide-to-building-a-crypto-ticker.7d40524752487885f093.md",
     "static/media/video_call_camera-2024-12-31-p3.md": "/static/media/video_call_camera-2024-12-31-p3.084a37e4154229704638.md",
     "static/media/camera-2024-04-23-p5.md": "/static/media/camera-2024-04-23-p5.8de840b124cee5f6f174.md",
     "static/media/translator-2025-12-28-p6.md": "/static/media/translator-2025-12-28-p6.0e9021568c9ade31b600.md",
@@ -62,11 +62,11 @@
     "index.html": "/index.html",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.9cbc08eb.css.map": "/static/css/main.9cbc08eb.css.map",
-    "main.8ee7eeeb.js.map": "/static/js/main.8ee7eeeb.js.map",
+    "main.194cfdf3.js.map": "/static/js/main.194cfdf3.js.map",
     "453.c3db55c9.chunk.js.map": "/static/js/453.c3db55c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9cbc08eb.css",
-    "static/js/main.8ee7eeeb.js"
+    "static/js/main.194cfdf3.js"
   ]
 }
