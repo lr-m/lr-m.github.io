@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.9cbc08eb.css",
-    "main.js": "/static/js/main.194cfdf3.js",
-    "static/js/819.b71b01fb.chunk.js": "/static/js/819.b71b01fb.chunk.js",
+    "main.js": "/static/js/main.514f68d8.js",
+    "static/js/819.c5b36f67.chunk.js": "/static/js/819.c5b36f67.chunk.js",
     "static/js/453.c3db55c9.chunk.js": "/static/js/453.c3db55c9.chunk.js",
     "static/media/x.png": "/static/media/x.f750615696ca49952d51.png",
     "static/media/video_call_camera-2025-03-16-p7.md": "/static/media/video_call_camera-2025-03-16-p7.106883b19381e9f231bf.md",
@@ -58,15 +58,15 @@
     "static/media/camera-2024-04-26-p6.md": "/static/media/camera-2024-04-26-p6.1bb32abd2bb7e1292c9a.md",
     "static/media/tenda_cam-2025-08-25-p3.md": "/static/media/tenda_cam-2025-08-25-p3.95e79e128572f1aa1330.md",
     "static/media/translator-2025-03-31-p1.md": "/static/media/translator-2025-03-31-p1.9a39c1ce967ad8c5b8e5.md",
-    "static/media/about-me.md": "/static/media/about-me.08476f2851e09ed19dff.md",
+    "static/media/about-me.md": "/static/media/about-me.b39cc55860fe2fa44a8c.md",
     "index.html": "/index.html",
     "static/media/arrow.svg": "/static/media/arrow.83aa775a65892efff8dd.svg",
     "main.9cbc08eb.css.map": "/static/css/main.9cbc08eb.css.map",
-    "main.194cfdf3.js.map": "/static/js/main.194cfdf3.js.map",
+    "main.514f68d8.js.map": "/static/js/main.514f68d8.js.map",
     "453.c3db55c9.chunk.js.map": "/static/js/453.c3db55c9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9cbc08eb.css",
-    "static/js/main.194cfdf3.js"
+    "static/js/main.514f68d8.js"
   ]
 }

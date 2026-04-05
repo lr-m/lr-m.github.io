@@ -8,9 +8,7 @@ I work in cyber security and have a background in Computer Science. My primary f
   <div>
     Recently, I was lucky enough to go to DC to present some of my ARM Mali Utgard research in DistrictCon's Junkyard competition!
 
-    
-
-    <a href="https://www.youtube.com/live/9Sty83IPMd0?t=6680s"><em>Link for the talk!</em></a>
+    <a href="https://www.youtube.com/live/9Sty83IPMd0?si=qHjgoQuyKKt7oMig&t=5624"><em>Link for the talk!</em></a>
   </div>
 </div>
 
