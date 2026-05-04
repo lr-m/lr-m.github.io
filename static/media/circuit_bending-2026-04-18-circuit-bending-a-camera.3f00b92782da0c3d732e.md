@@ -1,9 +1,15 @@
 ---
 published: true
-title: "📷 Circuit Bending a Cheap Camera"
+title: "📷 Learning Circuit Bending On a Cheap Camera"
 toc: true
 toc_sticky: true
 tagline: "The other day I stumbled across an Instagram reel about circuit bending cameras for cool effects, and decided to try it myself!"
+windowGradientStart: rgb(19 19 15)
+windowGradientEnd: rgb(24 26 48)
+windowBorder: rgb(15 19 15)
+minimizeButton: rgb(52, 56, 100)
+maximizeButton: rgb(90 145 195)
+closeButton: rgb(40 62 211)
 tags:
     - Hardware
     - Fun/Creative
@@ -19,7 +25,7 @@ I'd never even considered circuit bending as a thing before, glitches have been 
 
 It really does give me the vibe of early hacking, devices with wires hanging out of the side, shorting them to break things in cool ways, bricking stuff when you short VCC to GND - super cool.
 
-![circuit_bending.png](/assets/images/other/circuit_bending_cameras/circuit_bending.png)
+![circuit_bending.png](/assets/images/circuit_bending/cheap_camera_p1/circuit_bending.png)
 
 I really recommend having a browse through [r/CircuitBending](https://www.reddit.com/r/CircuitBending/) on reddit, the effects people manage to get out of cameras are super cool, even as someone who isn't super into photography.
 
@@ -27,17 +33,17 @@ I really recommend having a browse through [r/CircuitBending](https://www.reddit
 
 There aren't many tutorials online, but most of them focus on cheap toy cameras - I managed to snag one on Vinted for dirt cheap (with a 32gb SD card - score!).
 
-![camera.png](/assets/images/other/circuit_bending_cameras/camera.png)
+![camera.png](/assets/images/circuit_bending/cheap_camera_p1/camera.png)
 
 After ripping it apart, I had to find some nice points to mess with. The easiest way to bend cameras (according to the tutorials I read) is to short data pins around the connector for the camera sensor. Luckily, this camera was full of test points, so on this one, I didn't have to solder directly to the connector pads, which saves a headache. I have seen some people online bridge the pads, but it is hard to identify which pins yield cool bends without trial and error.
 
-![pins.jpg](/assets/images/other/circuit_bending_cameras/pins.jpg)
+![pins.jpg](/assets/images/circuit_bending/cheap_camera_p1/pins.jpg)
 
 # First Bend
 
 At this point, I had just soldered wires to the data pin testpoints, and just started shorting stuff. This is the first glitch I got:
 
-![first_bend.jpg](/assets/images/other/circuit_bending_cameras/first_bend.jpg)
+![first_bend.jpg](/assets/images/circuit_bending/cheap_camera_p1/first_bend.jpg)
 
 Glitching the data pins on this camera can be pretty green-heavy, there is definitely a reason but I'm not that interested as to why - I just want to get cool bends!
 
@@ -47,7 +53,7 @@ After a bit of trial and error and shorting various stuff (and somehow not blowi
 
 Here is how it looks now - not the prettiest, but it gets the job done:
 
-![finished_camera.jpg](/assets/images/other/circuit_bending_cameras/finished_camera.jpg)
+![finished_camera.jpg](/assets/images/circuit_bending/cheap_camera_p1/finished_camera.jpg)
 
 # More Bends
 
@@ -55,44 +61,44 @@ Now that I have three potentiometers controlling which pins get shorted, and a s
 
 - This bend is super cool, it essentially makes the image black and white, but only lets red through, giving a cool glitchy effect on this red can:
 
-![dr_pepper.jpg](/assets/images/other/circuit_bending_cameras/dr_pepper.jpg)
+![dr_pepper.jpg](/assets/images/circuit_bending/cheap_camera_p1/dr_pepper.jpg)
 
 - The camera also has built in filters, which can help soften the colours of some of the crazier bends:
 
-![kevin.jpg](/assets/images/other/circuit_bending_cameras/kevin.jpg)
+![kevin.jpg](/assets/images/circuit_bending/cheap_camera_p1/kevin.jpg)
 
 - This bend makes the image very RGB heavy, the red bit is his tongue:
 
-![kevin2.jpg](/assets/images/other/circuit_bending_cameras/kevin2.jpg)
+![kevin2.jpg](/assets/images/circuit_bending/cheap_camera_p1/kevin2.jpg)
 
 - In this one, I liked how the brightness coming from the lamp was stepped and glitchy:
 
-![lamp.jpg](/assets/images/other/circuit_bending_cameras/lamp.jpg)
+![lamp.jpg](/assets/images/circuit_bending/cheap_camera_p1/lamp.jpg)
 
 - This is a good example of a more intense bend where its a bit trickier to see what is going on - cool colours though:
 
-![livingroom.jpg](/assets/images/other/circuit_bending_cameras/livingroom.jpg)
+![livingroom.jpg](/assets/images/circuit_bending/cheap_camera_p1/livingroom.jpg)
 
 - These demonstrate the effect of the switch when some more bends are applied:
 
-![motorola1.jpg](/assets/images/other/circuit_bending_cameras/motorola1.jpg)
-![motorola2.jpg](/assets/images/other/circuit_bending_cameras/motorola2.jpg)
+![motorola1.jpg](/assets/images/circuit_bending/cheap_camera_p1/motorola1.jpg)
+![motorola2.jpg](/assets/images/circuit_bending/cheap_camera_p1/motorola2.jpg)
 
 - This one feels like a clustering algorithm has been run on the colours, pretty cool effect:
 
-![pylon1.jpg](/assets/images/other/circuit_bending_cameras/pylon1.jpg)
+![pylon1.jpg](/assets/images/circuit_bending/cheap_camera_p1/pylon1.jpg)
 
 -  More intense bends, the border around the pylon is interesting:
 
-![pylon2.jpg](/assets/images/other/circuit_bending_cameras/pylon2.jpg)
+![pylon2.jpg](/assets/images/circuit_bending/cheap_camera_p1/pylon2.jpg)
 
 - An old Motorola I have lying around looks super cool with these colours:
 
-![v70e.jpg](/assets/images/other/circuit_bending_cameras/v70e.jpg)
+![v70e.jpg](/assets/images/circuit_bending/cheap_camera_p1/v70e.jpg)
 
 - The camera also has an invert filter if you get sick of the heavy green bias:
 
-![view.jpg](/assets/images/other/circuit_bending_cameras/view.jpg)
+![view.jpg](/assets/images/circuit_bending/cheap_camera_p1/view.jpg)
 
 # Conclusion
 
